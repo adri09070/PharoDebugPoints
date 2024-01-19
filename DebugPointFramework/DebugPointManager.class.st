@@ -14,10 +14,10 @@ Class {
 { #category : 'removing' }
 DebugPointManager class >> handleClassRemoved: anAnnouncement [
 
-	DebugPoint all copy do: [ :debugPoint | 
+	DebugPoint all copy do: [ :debugPoint |
 		debugPoint link methods
 			detect: [ :m | m methodClass = anAnnouncement classRemoved ]
-			ifFound: [ debugPoint remove"debugPoint removeFromClass: anAnnouncement classRemoved" ] ]
+			ifFound: [ debugPoint remove ] ]
 ]
 
 { #category : 'removing' }
