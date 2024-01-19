@@ -141,8 +141,9 @@ DebugPoint >> metaLink [
 
 { #category : 'accessing' }
 DebugPoint >> method [
-"returns the method to which the debug point is attached"
-	^self node methodNode method
+	"returns the method to which the debug point is attached"
+
+	^ self node methodNode compiledMethod
 ]
 
 { #category : 'accessing' }
