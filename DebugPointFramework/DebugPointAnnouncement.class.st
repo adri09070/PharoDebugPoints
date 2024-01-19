@@ -6,7 +6,8 @@ Class {
 	#superclass : 'SystemAnnouncement',
 	#instVars : [
 		'debugPoint',
-		'nodes'
+		'nodes',
+		'methods'
 	],
 	#category : 'DebugPointFramework-Announcements',
 	#package : 'DebugPointFramework',
@@ -64,10 +65,12 @@ DebugPointAnnouncement >> debugPoint: aDebugPoint [
 
 { #category : 'accessing' }
 DebugPointAnnouncement >> methods [
-	^nodes flatCollect: [ :entity |
-		(entity isKindOf: RBProgramNode) 
-			ifTrue: [ {entity methodNode compiledMethod}  ]
-			ifFalse: [ entity usingMethods ] ]
+
+	^ methods ifNil: [
+		  methods := nodes flatCollect: [ :entity |
+			             (entity isKindOf: RBProgramNode)
+				             ifTrue: [ { entity methodNode compiledMethod } ]
+				             ifFalse: [ entity usingMethods ] ] ]
 ]
 
 { #category : 'accessing' }
