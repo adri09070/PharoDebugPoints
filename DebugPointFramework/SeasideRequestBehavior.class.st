@@ -1,24 +1,26 @@
 Class {
-	#name : #SeasideRequestBehavior,
-	#superclass : #DebugPointBehavior,
+	#name : 'SeasideRequestBehavior',
+	#superclass : 'DebugPointBehavior',
 	#instVars : [
 		'ip'
 	],
-	#category : #'DebugPointFramework-Behaviors'
+	#category : 'DebugPointFramework-Behaviors',
+	#package : 'DebugPointFramework',
+	#tag : 'Behaviors'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SeasideRequestBehavior class >> uiElement [
 
 	^SeasideRequestUI
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SeasideRequestBehavior >> context [
 	^self getArgument: #context
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 SeasideRequestBehavior >> execute [
 	| receiver |
 	receiver := self context receiver .
@@ -27,19 +29,19 @@ SeasideRequestBehavior >> execute [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SeasideRequestBehavior >> initialize [ 
 	"should be executed before once and count etc."
 	super initialize.
 	self priority: 50.
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 SeasideRequestBehavior >> ip [
 	^ip ifNil: [ '' ].
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 SeasideRequestBehavior >> ip: aString [
 	ip := aString
 ]
