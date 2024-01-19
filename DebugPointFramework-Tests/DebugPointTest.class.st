@@ -1,16 +1,17 @@
 Class {
-	#name : #DebugPointTest,
-	#superclass : #TestCase,
+	#name : 'DebugPointTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'dp',
 		'node',
 		'context',
 		'dp2'
 	],
-	#category : #'DebugPointFramework-Tests'
+	#category : 'DebugPointFramework-Tests',
+	#package : 'DebugPointFramework-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> setUp [
 	super setUp.
 	
@@ -21,7 +22,7 @@ DebugPointTest >> setUp [
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DebugPointTest >> setUpContext [
 	"set up context"
 	| aCompiledMethod aReceiver aSender anArgument aMethodContext |
@@ -36,7 +37,7 @@ DebugPointTest >> setUpContext [
 		                  arguments: { anArgument }.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> tearDown [ 
 	
 	dp remove.
@@ -44,7 +45,7 @@ DebugPointTest >> tearDown [
 	super tearDown.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testBehaviorPriority [
 	| a b c set |
 	dp := DebugPointManager installNew: DebugPoint On: node.
@@ -59,14 +60,14 @@ DebugPointTest >> testBehaviorPriority [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testBreakDebugPoint [
 	dp := DebugPointManager installNew: BreakDebugPoint On: node.
 	self should: [dp hitWithContext: context] raise: Break.
 	self should: [DummyTestClass new id:2 ] raise: Break.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testChainBehavior [
 	dp := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
 	dp2 := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
@@ -102,7 +103,7 @@ DebugPointTest >> testChainBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testConditionBehavior [
 	| behavior |
 	behavior := ConditionBehavior new condition: 'corner=(300@200)'.
@@ -126,7 +127,7 @@ DebugPointTest >> testConditionBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testConditionBehaviorThisContext [
 	| behavior |
 	
@@ -149,7 +150,7 @@ DebugPointTest >> testConditionBehaviorThisContext [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testCountBehavior [
 	| cbh |
 	
@@ -163,7 +164,7 @@ DebugPointTest >> testCountBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testOnceBehavior [
 	dp := DebugPointManager installNew: DebugPoint On: node.
 	dp addBehavior: (OnceBehavior new).
@@ -174,7 +175,7 @@ DebugPointTest >> testOnceBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testOnceBreakBehavior [
 	dp := DebugPointManager installNew: BreakDebugPoint On: node withBehaviors: {OnceBehavior}.
 
@@ -185,7 +186,7 @@ DebugPointTest >> testOnceBreakBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testScriptDebugPoint [
 
 	"dp := DebugPointManager installNew: TranscriptDebugPoint On: node."
@@ -198,7 +199,7 @@ DebugPointTest >> testScriptDebugPoint [
 	self should: [DummyTestClass new id:2 ] raise: Break.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testTestEnvironmentBehavior [
 	dp := DebugPointManager installNew: BreakDebugPoint On: node withBehaviors: {TestEnvironmentBehavior }.
 
@@ -211,7 +212,7 @@ DebugPointTest >> testTestEnvironmentBehavior [
 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testTranscriptDebugPoint [
 
 	"dp := DebugPointManager installNew: TranscriptDebugPoint On: node."
@@ -222,9 +223,10 @@ DebugPointTest >> testTranscriptDebugPoint [
 	self assert: Transcript contents equals: 'string'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 DebugPointTest >> testWatchDebugPoint [
 	| his node2 | 
+	"watches the values of argument variable `anId`"
 	node2 := (DummyTestClass methods select: [ :method | method name = 'DummyTestClass>>#id:' ]) first ast children second children first children first children first.
 	dp := DebugPointManager installNew: WatchDebugPoint On: node2.
 	his := OrderedCollection new.
