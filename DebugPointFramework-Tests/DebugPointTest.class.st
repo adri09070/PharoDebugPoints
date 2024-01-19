@@ -52,11 +52,14 @@ DebugPointTest >> testBehaviorPriority [
 	a := OnceBehavior new priority: 2.
 	b := CountBehavior new priority: 1.
 	c := ChainBehavior new priority: 3.
+	
 	dp addBehavior: a.
 	dp addBehavior: b.
 	dp addBehavior: c.
+	
 	set := OrderedCollection new add: c; add: a; add: b; yourself.
-	self assert: (dp behaviors asOrderedCollection ) equals: set.
+	
+	self assertCollection: (dp behaviors asOrderedCollection ) equals: set.
 
 ]
 
@@ -225,34 +228,36 @@ DebugPointTest >> testTranscriptDebugPoint [
 
 { #category : 'running' }
 DebugPointTest >> testWatchDebugPoint [
-	| his node2 | 
+
+	| his node2 |
 	"watches the values of argument variable `anId`"
-	node2 := (DummyTestClass methods select: [ :method | method name = 'DummyTestClass>>#id:' ]) first ast children second children first children first children first.
+	node2 := (DummyTestClass methods select: [ :method |
+		          method name = 'DummyTestClass>>#id:' ]) first ast children
+		         second children first children first children first.
 	dp := DebugPointManager installNew: WatchDebugPoint On: node2.
 	his := OrderedCollection new.
 
 	"check empty history"
-	self assert: dp history equals: his.
+	self assertCollection: dp history equals: his.
 	"check history after hitting dp"
 	DummyTestClass new id: 2.
 	his add: 2.
-	self assert: dp history equals: his.
+	self assertCollection: dp history equals: his.
 	"once more"
 	DummyTestClass new id: 'string'.
 	his addFirst: 'string'.
-	self assert: dp history equals: his.
-	"once more"	
+	self assertCollection: dp history equals: his.
+	"once more"
 	DummyTestClass new id: 'string2'.
 	his addFirst: 'string2'.
-	self assert: dp history equals: his.
+	self assertCollection: dp history equals: his.
 	"check if limit is applied correctly"
 	dp limit: 2.
 	his removeLast.
-	self assert: dp history equals: his.
+	self assertCollection: dp history equals: his.
 	"hitting does not change the history size anymore"
 	DummyTestClass new id: 'string3'.
 	his addFirst: 'string3'.
 	his removeLast.
-	self assert: dp history equals: his.
-
+	self assertCollection: dp history equals: his
 ]
