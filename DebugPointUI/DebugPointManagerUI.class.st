@@ -2,17 +2,20 @@
 I am the UI for the complete DebugPoint Manager.
 "
 Class {
-	#name : #DebugPointManagerUI,
-	#superclass : #SpPresenter,
+	#name : 'DebugPointManagerUI',
+	#superclass : 'SpPresenter',
+	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'dpTable',
 		'dpEditor',
-		'dpCode'
+		'dpCode',
+		'inputFilter'
 	],
-	#category : #DebugPointUI
+	#category : 'DebugPointUI',
+	#package : 'DebugPointUI'
 }
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 DebugPointManagerUI class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	(aBuilder item: #'Debug Point Manager')
@@ -24,22 +27,34 @@ DebugPointManagerUI class >> menuCommandOn: aBuilder [
 	aBuilder withSeparatorAfter
 ]
 
-{ #category : #layout }
-DebugPointManagerUI >> defaultLayout [ 
-	^SpPanedLayout newLeftToRight
-		add: (SpPanedLayout newTopToBottom  
-		add: dpTable;
-		add: dpCode;
-		positionOfSlider:50percent;
-		yourself);
-		add: dpEditor;
-		positionOfSlider:50percent;
-		yourself.
-		
-		
+{ #category : 'initialization' }
+DebugPointManagerUI >> connectPresenters [
+
+	inputFilter whenSubmitDo: [ :text |
+		self items: DebugPoint all asOrderedCollection ]
 ]
 
-{ #category : #initialization }
+{ #category : 'layout' }
+DebugPointManagerUI >> defaultLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
+				   add: inputFilter;
+				   yourself)
+		  expand: false;
+		  add: (SpPanedLayout newLeftToRight
+				   add: (SpPanedLayout newTopToBottom
+						    add: dpTable;
+						    add: dpCode;
+						    positionOfSlider: 50 percent;
+						    yourself);
+				   add: dpEditor;
+				   positionOfSlider: 50 percent;
+				   yourself);
+		  yourself
+]
+
+{ #category : 'initialization' }
 DebugPointManagerUI >> initialize [ 
 
 	super initialize.
@@ -50,17 +65,19 @@ DebugPointManagerUI >> initialize [
 	
 ]
 
-{ #category : #initialization }
-DebugPointManagerUI >> initializePresenters [ 
+{ #category : 'initialization' }
+DebugPointManagerUI >> initializePresenters [
 
 	self initializeTable.
 	dpEditor := DebugPointEditor new.
 	dpCode := DebugPointCodePresenter new editable: false.
-	
-	
+
+	inputFilter := self newSearchInput
+		               placeholder: 'Search by name';
+		               yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DebugPointManagerUI >> initializeTable [
 	dpTable := DebugPointTablePresenter new.
 	
@@ -69,7 +86,7 @@ DebugPointManagerUI >> initializeTable [
 		dpCode updateCode: dpTable selectedItem ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DebugPointManagerUI >> initializeWindow: aWindowPresenter [
 	
 	aWindowPresenter
@@ -78,12 +95,19 @@ DebugPointManagerUI >> initializeWindow: aWindowPresenter [
 		initialExtent: 800@550
 ]
 
-{ #category : #enumerating }
+{ #category : 'accessing' }
+DebugPointManagerUI >> items: aDebugPointCollection [
+
+	dpTable items: (aDebugPointCollection select: [ :db |
+			 db name beginsWith: inputFilter text ])
+]
+
+{ #category : 'enumerating' }
 DebugPointManagerUI >> select: aDebugPoint [
 	dpTable selectItem: aDebugPoint 
 ]
 
-{ #category : #update }
+{ #category : 'update' }
 DebugPointManagerUI >> updateEditor [
 	dpTable refresh.
 	dpEditor updateAll .
@@ -91,7 +115,7 @@ DebugPointManagerUI >> updateEditor [
 	
 ]
 
-{ #category : #update }
+{ #category : 'update' }
 DebugPointManagerUI >> updateTable [
 	| prevSel |
 	prevSel := dpTable selectedItem.

@@ -1,13 +1,14 @@
 Class {
-	#name : #SeasideRequestUI,
-	#superclass : #DebugPointBehaviorUI,
+	#name : 'SeasideRequestUI',
+	#superclass : 'DebugPointBehaviorUI',
 	#instVars : [
 		'textInput'
 	],
-	#category : #DebugPointUI
+	#category : 'DebugPointUI',
+	#package : 'DebugPointUI'
 }
 
-{ #category : #layout }
+{ #category : 'layout' }
 SeasideRequestUI >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
@@ -16,13 +17,13 @@ SeasideRequestUI >> activate [
 	self behavior: bh
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 SeasideRequestUI >> deactivate [
 	self debugPoint removeBehavior: SeasideRequestBehavior.
 	self behavior: nil.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SeasideRequestUI >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	
@@ -33,7 +34,7 @@ SeasideRequestUI >> debugPoint: aDebugPoint [
 
 ]
 
-{ #category : #layout }
+{ #category : 'layout' }
 SeasideRequestUI >> defaultLayout [ 
 	| newLayout |
 	
@@ -52,7 +53,7 @@ SeasideRequestUI >> defaultLayout [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SeasideRequestUI >> initializePresenters [ 
 	
 	textInput  := self newTextInput.

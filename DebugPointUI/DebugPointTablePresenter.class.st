@@ -2,12 +2,14 @@
 I am a table presenter for debug points with a custom context menu.
 "
 Class {
-	#name : #DebugPointTablePresenter,
-	#superclass : #SpTablePresenter,
-	#category : #DebugPointUI
+	#name : 'DebugPointTablePresenter',
+	#superclass : 'SpTablePresenter',
+	#classTraits : '{} + TraitedClass',
+	#category : 'DebugPointUI',
+	#package : 'DebugPointUI'
 }
 
-{ #category : #'context menu' }
+{ #category : 'context menu' }
 DebugPointTablePresenter >> debugPointContextMenu [ 
 	^ self newMenu
 		addGroup: [ :aGroup | 
@@ -47,52 +49,56 @@ DebugPointTablePresenter >> debugPointContextMenu [
 				]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DebugPointTablePresenter >> initialize [ 
 	super initialize.
 	self initializeDebugPointTable 
 ]
 
-{ #category : #initialization }
-DebugPointTablePresenter >> initializeDebugPointTable [ 
+{ #category : 'initialization' }
+DebugPointTablePresenter >> initializeDebugPointTable [
 
 	self beResizable.
-	self 
+	self
 		addColumn:
 			((SpCheckBoxTableColumn
-				title: ' '
-				evaluated: [ :item | item enabled ])
-				onActivation: [ :item | item enabled: true ];
-				onDeactivation: [ :item | item enabled: false ];
-				width: 20;
-				yourself);
+				  title: ' '
+				  evaluated: [ :item | item enabled ])
+				 onActivation: [ :item | item enabled: true ];
+				 onDeactivation: [ :item | item enabled: false ];
+				 width: 20;
+				 yourself);
 		addColumn:
 			((SpStringTableColumn
-				title: 'Type'
-				evaluated: [ :item | item name ])
-				width: 80;
-				yourself);
+				  title: 'Type'
+				  evaluated: [ :item | item name ])
+				 width: 80;
+				 yourself);
+		addColumn: ((SpStringTableColumn
+				  title: 'Target'
+				  evaluated: [ :item | item method printString ])
+				 width: 180;
+				 yourself);
 		addColumn:
 			((SpStringTableColumn
-				title: 'Target'
-				evaluated: [ :item | item method printString ])
-				width: 180;
-				yourself);
-		addColumn:
-			(SpStringTableColumn
-				title: 'Scope'
-				evaluated: [ :item | item targetInstance  ]);
-
+				  title: 'Name'
+				  evaluated: [ :item | item name ])
+				 beEditable;
+				 onAcceptEdition: [ :item :newName | item name: newName asSymbol ]);
+		addColumn: (SpStringTableColumn
+				 title: 'Scope'
+				 evaluated: [ :item | item targetInstance ]);
 		contextMenu: self debugPointContextMenu.
-	self items: (DebugPoint all asOrderedCollection  ). 
-	
-	
+	self items: DebugPoint all asOrderedCollection.
+
+
 	self dropEnabled: true.
 	self dragEnabled: true.
-	self wantsDrop: [ :item | (item row ~= 0) and: [item passenger first isKindOf: DebugPoint] ]. 
-	self acceptDrop: [ :item | 
+	self wantsDrop: [ :item |
+		item row ~= 0 and: [ item passenger first isKindOf: DebugPoint ] ].
+	self acceptDrop: [ :item |
 		item passenger first addBehavior: ChainBehavior new.
 		(self itemAt: item row) addBehavior: ChainBehavior new.
-		((self itemAt: item row )getBehavior: ChainBehavior) putChild: (item passenger first).
-		].
+		((self itemAt: item row) getBehavior: ChainBehavior) putChild:
+			item passenger first ]
 ]
