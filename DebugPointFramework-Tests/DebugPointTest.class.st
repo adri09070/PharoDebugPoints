@@ -204,15 +204,23 @@ DebugPointTest >> testScriptDebugPoint [
 
 { #category : 'running' }
 DebugPointTest >> testTestEnvironmentBehavior [
-	dp := DebugPointManager installNew: BreakDebugPoint On: node withBehaviors: {TestEnvironmentBehavior }.
 
-	self should: [dp hitWithContext: context] raise: Break.
+	| currentEnvironment |
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      On: node
+		      withBehaviors: { TestEnvironmentBehavior }.
+
+
+	self should: [ dp hitWithContext: context ] raise: Break.
+
+	currentEnvironment := CurrentExecutionEnvironment value.
 	"To check if the test triggers when the execution environment is not a test"
+	[
 	CurrentExecutionEnvironment restoreDefault.
-	self assert: (CurrentExecutionEnvironment value isTest) equals: false.
-	self shouldnt: [dp hitWithContext: context] raise: Break.
-
-
+	self assert: CurrentExecutionEnvironment value isTest equals: false.
+	self shouldnt: [ dp hitWithContext: context ] raise: Break ] ensure: [
+		CurrentExecutionEnvironment value: currentEnvironment ]
 ]
 
 { #category : 'running' }
