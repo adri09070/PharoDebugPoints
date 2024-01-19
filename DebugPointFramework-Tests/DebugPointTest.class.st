@@ -71,36 +71,104 @@ DebugPointTest >> testBreakDebugPoint [
 ]
 
 { #category : 'running' }
-DebugPointTest >> testChainBehavior [
+DebugPointTest >> testChainBehaviorHitWithContext [
+
+	dp := DebugPointManager
+		      installNew: DebugPoint
+		      On: node
+		      withBehaviors: { ChainBehavior }.
+	dp2 := DebugPointManager
+		       installNew: DebugPoint
+		       On: node
+		       withBehaviors: { ChainBehavior }.
+
+
+	dp putChild: dp2.
+
+	"initial states check"
+	self assert: dp enabled equals: true.
+	self assert: dp2 enabled equals: false.
+
+	"hit parent, check states"
+	dp hitWithContext: context.
+	self assert: dp enabled equals: false.
+	self assert: dp2 enabled equals: true.
+
+	"hit child, check states"
+	dp2 hitWithContext: context.
+	self assert: dp enabled equals: false.
+	self assert: dp2 enabled equals: false
+]
+
+{ #category : 'running' }
+DebugPointTest >> testChainBehaviorPutChild [
 	dp := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
 	dp2 := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
 	
 	"check parent/child"
 	self assert: (dp child) equals: nil.
 	self assert: (dp parent) equals: nil.
+	
 	dp putChild: dp2.
+	
 	self assert: (dp child) equals: dp2.
 	self assert: (dp parent) equals: nil.
 	self assert: (dp2 parent) equals: dp.
 	
-	"reset states check"
-	dp resetChain.
-	self assert: (dp enabled) equals: true.
-	self assert: (dp2 enabled) equals: false.
 	
+]
+
+{ #category : 'running' }
+DebugPointTest >> testChainBehaviorRemoveBehavior [
+
+	dp := DebugPointManager
+		      installNew: DebugPoint
+		      On: node
+		      withBehaviors: { ChainBehavior }.
+	dp2 := DebugPointManager
+		       installNew: DebugPoint
+		       On: node
+		       withBehaviors: { ChainBehavior }.
+
+	"check parent/child"
+	dp putChild: dp2.
+	"hit parent, check states"
+	dp hitWithContext: context.
+
+	self assert: dp child equals: dp2.
+	self assert: dp parent equals: nil.
+	self assert: dp2 parent equals: dp.
+
+	self assert: dp enabled equals: false.
+	self assert: dp2 enabled equals: true.
+
+	"check parent/child after removal"
+	dp removeBehavior: ChainBehavior.
+	
+	self assert: dp2 parent equals: nil.
+	self assert: dp2 child equals: nil.
+	
+	self deny: dp enabled.
+	self assert: dp2 enabled.
+
+]
+
+{ #category : 'running' }
+DebugPointTest >> testChainBehaviorResetChain [
+	dp := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
+	dp2 := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
+	
+	dp putChild: dp2.
 	"hit parent, check states"
 	dp hitWithContext: context.
 	self assert: (dp enabled) equals: false.
 	self assert: (dp2 enabled) equals: true.
-	"hit child, check states"
-	dp2 hitWithContext: context.
-	self assert: (dp enabled) equals: false.
-	self assert: (dp2 enabled) equals: false.
+	
+	"reset states check"
+	dp resetChain.
 
-	"check parent/child after removal"
-	dp2 removeBehavior: ChainBehavior.
-	self assert: (dp parent) equals: nil.
-	self assert: (dp child) equals: nil.
+	self assert: (dp enabled) equals: true.
+	self assert: (dp2 enabled) equals: false
 	
 
 

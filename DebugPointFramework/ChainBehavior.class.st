@@ -95,11 +95,13 @@ ChainBehavior >> parent [
 { #category : 'API' }
 ChainBehavior >> putChild: aDebugPoint [
 
-	(self checkCircularChain: aDebugPoint withParent: self debugPoint) 
+	(self checkCircularChain: aDebugPoint withParent: self debugPoint)
 		ifTrue: [ ^ self ].
 	"check if there is already a parent or smth"
 	self class removeChild: aDebugPoint.
 	self class allChains at: self debugPoint put: aDebugPoint.
+	"When a chain is modified, the chain is reset"
+	self resetChain.
 	DebugPointManager notifyDebugPointChanged: aDebugPoint
 ]
 
