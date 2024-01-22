@@ -9,7 +9,8 @@ Class {
 		'dpTable',
 		'dpEditor',
 		'dpCode',
-		'inputFilter'
+		'inputFilter',
+		'selectAllCheckbox'
 	],
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
@@ -27,11 +28,42 @@ DebugPointManagerUI class >> menuCommandOn: aBuilder [
 	aBuilder withSeparatorAfter
 ]
 
+{ #category : 'action handling' }
+DebugPointManagerUI >> activateAllDebugPoints [
+
+	dpTable items do: [ :debugPoint |
+		self activateDebugPoint: debugPoint ]
+]
+
+{ #category : 'action handling' }
+DebugPointManagerUI >> activateDebugPoint: debugPoint [
+
+	(debugPoint getBehavior: ChainBehavior)
+		ifNil: [ debugPoint enabled: true ]
+		ifNotNil: [ debugPoint resetChain ]
+]
+
 { #category : 'initialization' }
 DebugPointManagerUI >> connectPresenters [
 
 	inputFilter whenSubmitDo: [ :text |
-		self items: DebugPoint all asOrderedCollection ]
+		self items: DebugPoint all asOrderedCollection ].
+	selectAllCheckbox
+		whenActivatedDo: [ self activateAllDebugPoints ];
+		whenDeactivatedDo: [ self deactivateAllDebugPoints ]
+]
+
+{ #category : 'action handling' }
+DebugPointManagerUI >> deactivateAllDebugPoints [
+
+	dpTable items do: [ :debugPoint |
+		self deactivateDebugPoint: debugPoint ]
+]
+
+{ #category : 'action handling' }
+DebugPointManagerUI >> deactivateDebugPoint: debugPoint [
+
+	debugPoint enabled: false
 ]
 
 { #category : 'layout' }
@@ -39,6 +71,7 @@ DebugPointManagerUI >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
+				   add: selectAllCheckbox expand: false;
 				   add: inputFilter;
 				   yourself)
 		  expand: false;
@@ -74,7 +107,10 @@ DebugPointManagerUI >> initializePresenters [
 
 	inputFilter := self newSearchInput
 		               placeholder: 'Search by name';
-		               yourself
+		               yourself.
+	selectAllCheckbox := self newCheckBox
+		                     label: '(De)activate all';
+		                     yourself
 ]
 
 { #category : 'initialization' }

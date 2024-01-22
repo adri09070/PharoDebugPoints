@@ -4,40 +4,41 @@ I am a select dialog to display DebugPoints so that the scope of a DebugPoint ca
 Class {
 	#name : 'DebugPointSelectDialog',
 	#superclass : 'SpSelectDialog',
+	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'code',
-		'scope'
+		'scope',
+		'inputFilter'
 	],
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
 }
 
 { #category : 'layout' }
-DebugPointSelectDialog >> defaultLayout [ 
+DebugPointSelectDialog >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
-		borderWidth: 5;
-		spacing: 5;
-		add: label expand: false;
-	   add: (SpPanedLayout newTopToBottom
-			add: list;
-			add: code;
-			yourself);
-		yourself
+		  borderWidth: 5;
+		  spacing: 5;
+		  add: label expand: false;
+		  add: (SpPanedLayout newTopToBottom
+				   add: list;
+				   add: code;
+				   yourself);
+		  yourself
 ]
 
 { #category : 'initialization' }
-DebugPointSelectDialog >> initializePresenters [ 
+DebugPointSelectDialog >> initializePresenters [
+
 	label := self newLabel.
 
 	list := DebugPointTablePresenter new.
 	code := DebugPointCodePresenter new
-		beForScripting;
-		editable: false.
-	list whenSelectionChangedDo: [ :dp | 
-		list selectedItem ifNotNil:[
-			code updateCode: list selectedItem ].
-	]
+		        beForScripting;
+		        editable: false.
+	list whenSelectionChangedDo: [ :dp |
+		list selectedItem ifNotNil: [ code updateCode: list selectedItem ] ]
 ]
 
 { #category : 'initialization' }
@@ -51,9 +52,11 @@ DebugPointSelectDialog >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'api' }
-DebugPointSelectDialog >> items: items [ 
+DebugPointSelectDialog >> items: items [
 	"filter debug points such that only those that are attached to the class of the inspected object are displayed"
-	list items: (items select: [ :db | db method methodClass = self scope ])
+
+	list items:
+		(items select: [ :db | db method methodClass = self scope ])
 ]
 
 { #category : 'accessing' }
