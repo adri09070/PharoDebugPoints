@@ -202,15 +202,13 @@ DebugPoint >> removeBehavior: aDebugPointBehaviorClass [
 { #category : 'removing' }
 DebugPoint >> removeFromMethod: aMethod [
 	"only used when editing methods with debug points"
-	|  nodes |
+
+	| nodes |
 	nodes := self link nodes copy.
 	self behaviors do: [ :bh | bh remove ].
 	self class remove: self.
 
-	DebugPointManager notifyDebugPointRemoved: self fromNodes: nodes.
-
-
-	
+	DebugPointManager notifyDebugPointRemoved: self fromNodes: nodes
 ]
 
 { #category : 'API' }
@@ -236,6 +234,12 @@ DebugPoint >> targetInstance [
 { #category : 'accessing' }
 DebugPoint >> targetInstance: anObject [
 	targetInstance := anObject 
+]
+
+{ #category : 'accessing' }
+DebugPoint >> type [
+
+	^ #Debugpoint
 ]
 
 { #category : 'ui building' }

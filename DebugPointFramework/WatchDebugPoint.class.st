@@ -68,6 +68,12 @@ WatchDebugPoint >> name [
 
 ]
 
+{ #category : 'accessing' }
+WatchDebugPoint >> type [
+
+	^ #Watchpoint
+]
+
 { #category : 'ui building' }
 WatchDebugPoint >> uiElement [ 
 	^WatchUI new debugPoint: self.

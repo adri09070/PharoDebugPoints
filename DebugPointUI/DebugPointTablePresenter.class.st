@@ -71,7 +71,7 @@ DebugPointTablePresenter >> initializeDebugPointTable [
 		addColumn:
 			((SpStringTableColumn
 				  title: 'Type'
-				  evaluated: [ :item | item name ])
+				  evaluated: [ :item | item type ])
 				 width: 80;
 				 yourself);
 		addColumn: ((SpStringTableColumn
