@@ -27,7 +27,7 @@ TestEnvironmentUI >> defaultLayout [
 { #category : 'initialization' }
 TestEnvironmentUI >> initializePresenters [ 
 	
-	checkBox  := self newCheckBox label: 'Test Environment Only'.
+	checkBox  := self newCheckBox label: 'Test Environment Only: Hits only when executing tests'.
 	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: TestEnvironmentBehavior new ] ].
 	checkBox whenDeactivatedDo: [ 
 		self debugPoint removeBehavior: TestEnvironmentBehavior. 

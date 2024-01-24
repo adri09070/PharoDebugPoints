@@ -48,7 +48,7 @@ CountUI >> initializePresenters [
 	
 	textInput := self newTextInput beNotEditable .
 	
-	checkBox  := self newCheckBox label: 'Counter'.
+	checkBox  := self newCheckBox label: 'Counter: Tracks how many times the debug point was reached'.
 	checkBox whenActivatedDo: [ 
 		self behavior ifNil: [ 
 			debugPoint addBehavior: CountBehavior new ] ].

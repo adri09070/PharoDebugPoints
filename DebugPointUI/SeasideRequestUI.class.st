@@ -1,3 +1,6 @@
+"
+I am the UI element for the SeasideRequestBehavior of DebugPoints and am added to the DebugPointEditor.
+"
 Class {
 	#name : 'SeasideRequestUI',
 	#superclass : 'DebugPointBehaviorUI',
@@ -58,7 +61,7 @@ SeasideRequestUI >> initializePresenters [
 	
 	textInput  := self newTextInput.
 	textInput whenTextChangedDo: [ self behavior ifNotNil: [behavior ip: textInput text ]].
-	checkBox := self newCheckBox label: 'Seaside Request IP'.
+	checkBox := self newCheckBox label: 'Seaside Request IP: Hits only for listed HTTP request senders'.
 	checkBox whenActivatedDo: [ self activate ].
 	checkBox whenDeactivatedDo: [ self deactivate ].
 	

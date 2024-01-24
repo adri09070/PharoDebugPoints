@@ -1,3 +1,6 @@
+"
+I am a Seaside Request Behavior that can be added to DebugPoints. I return true if and only if the receiver is a WAObject and the sender IP address of the involved HTTP request is listed by me
+"
 Class {
 	#name : 'SeasideRequestBehavior',
 	#superclass : 'DebugPointBehavior',

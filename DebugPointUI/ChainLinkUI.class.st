@@ -73,7 +73,7 @@ ChainLinkUI >> initializePresenters [
 				title: 'Target'
 				evaluated: [ :item | item method printString ])
 				yourself).
-	checkBox  := self newCheckBox label: 'Chain'.
+	checkBox  := self newCheckBox label: 'Chain: Each debug point is hit once in sequential order'.
 	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: ChainBehavior new ] ].
 	checkBox whenDeactivatedDo: [ 
 		self debugPoint removeBehavior: ChainBehavior. 

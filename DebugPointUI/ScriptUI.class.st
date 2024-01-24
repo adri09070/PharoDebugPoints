@@ -60,7 +60,7 @@ ScriptUI >> expand [
 { #category : 'initialization' }
 ScriptUI >> initializePresenters [ 
 	
-	checkBox  := self newCheckBox label: 'Script'.
+	checkBox  := self newCheckBox label: 'Script: Executes a script at each hit'.
 	checkBox whenActivatedDo: [ self activate ].
 	checkBox whenDeactivatedDo: [ self deactivate ].
 	

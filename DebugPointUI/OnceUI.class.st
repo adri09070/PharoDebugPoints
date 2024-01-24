@@ -27,7 +27,7 @@ OnceUI >> defaultLayout [
 { #category : 'initialization' }
 OnceUI >> initializePresenters [ 
 	
-	checkBox  := self newCheckBox label: 'Once'.
+	checkBox  := self newCheckBox label: 'Once: Deactivates debug point after one hit'.
 	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: OnceBehavior new ] ].
 	checkBox whenDeactivatedDo: [ 
 		self debugPoint removeBehavior: OnceBehavior. 

@@ -60,7 +60,7 @@ TranscriptUI >> initializePresenters [
 	
 	textInput  := self newText.
 	textInput whenTextChangedDo: [ self behavior ifNotNil: [behavior text: textInput text ]].
-	checkBox := self newCheckBox label: 'Transcript'.
+	checkBox := self newCheckBox label: 'Transcript: Logs to transcript at each hit'.
 	checkBox whenActivatedDo: [ self activate ].
 	checkBox whenDeactivatedDo: [ self deactivate ].
 	

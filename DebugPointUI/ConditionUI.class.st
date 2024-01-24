@@ -61,7 +61,7 @@ ConditionUI >> initializePresenters [
 	codeInput  := self newCode.
 	codeInput beForScripting.
 	codeInput whenTextChangedDo: [ self behavior ifNotNil: [behavior condition: codeInput text ]].
-	checkBox := self newCheckBox label: 'Condition'.
+	checkBox := self newCheckBox label: 'Condition: Hit when the condition evaluates to true'.
 	checkBox whenActivatedDo: [ self activate ].
 	checkBox whenDeactivatedDo: [ self deactivate ].
 	
