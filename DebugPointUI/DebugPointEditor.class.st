@@ -61,22 +61,21 @@ DebugPointEditor >> defaultLayout [
 
 { #category : 'initialization' }
 DebugPointEditor >> initializePresenters [
-	
-	actionBar := self newActionBar
-		add: (self newButton
-			label: 'Refresh'; 
-			icon: (self iconNamed: #smallUpdate);
-			help: 'refresh page';
-			action: [self updateAll ];
-			yourself);
-		addLast: (self newButton
-			label: 'Remove'; 
-			icon: (self iconNamed: #smallCancel);
-			help: 'Remove this point';
-			action: [ debugPoint remove. ];
-			yourself);
-		yourself.
-		
+
+	actionBar := self newToolbar
+		             add: (self newToolbarButton
+				              label: 'Refresh';
+				              icon: (self iconNamed: #smallUpdate);
+				              help: 'refresh page';
+				              action: [ self updateAll ];
+				              yourself);
+		             add: (self newToolbarButton
+				              label: 'Remove';
+				              icon: (self iconNamed: #smallCancel);
+				              help: 'Remove this point';
+				              action: [ debugPoint remove ];
+				              yourself);
+		             yourself
 ]
 
 { #category : 'layout' }
