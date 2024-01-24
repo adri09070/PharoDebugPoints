@@ -13,17 +13,20 @@ Class {
 
 { #category : 'accessing' }
 ChainLinkUI >> debugPoint: aDebugPoint [
+
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: ChainBehavior.
 	checkBox state: behavior isNotNil.
-	behavior ifNotNil: [ 
-
-	chain roots: (ChainBehavior rootFor: aDebugPoint) asOrderedCollection .
-	chain children: [ :dp | (ChainBehavior childFor: dp) ifNil:[OrderedCollection new] ifNotNil: [:dp2 | { dp2 } ]].
-	"chain expandAll."
-	"since selectItem does not work after expanding this requires a different solution to clarify which chainlink is currently selected"
-	chain selectItem: aDebugPoint.
-].
+	behavior ifNotNil: [
+		chain roots:
+			{ (ChainBehavior rootFor: aDebugPoint) } asOrderedCollection.
+		chain children: [ :dp |
+			(ChainBehavior childFor: dp)
+				ifNil: [ OrderedCollection new ]
+				ifNotNil: [ :dp2 | { dp2 } ] ].
+		"chain expandAll."
+		"since selectItem does not work after expanding this requires a different solution to clarify which chainlink is currently selected"
+		chain selectItem: aDebugPoint ]
 ]
 
 { #category : 'layout' }
