@@ -80,7 +80,7 @@ DebugPointEditor >> initializePresenters [
 
 { #category : 'layout' }
 DebugPointEditor >> newActiveCheckBox [
-	isActiveCheckBox := self newCheckBox label: 'enabled'.
+	isActiveCheckBox := self newCheckBox label: 'enabled: (de)activates debug point'.
 	isActiveCheckBox state: self debugPoint enabled.
 	isActiveCheckBox whenActivatedDo: [ self changeDebugPointState: true ].
 	isActiveCheckBox whenDeactivatedDo: [ self changeDebugPointState: false ].
