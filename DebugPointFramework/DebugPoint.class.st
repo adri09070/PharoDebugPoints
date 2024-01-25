@@ -51,7 +51,8 @@ DebugPoint >> addBehavior: aDebugPointBehavior [
 
 { #category : 'accessing' }
 DebugPoint >> arguments [
-	^arguments
+
+	^ arguments ifNil: [ arguments := Dictionary new ]
 ]
 
 { #category : 'accessing' }
@@ -104,14 +105,11 @@ DebugPoint >> getBehavior: aBehaviorClass [
 { #category : 'API' }
 DebugPoint >> hitWithContext: aContext [
 	"returns false if the execution should be stopped, else true"
-	<debuggerCompleteToSender>
-	self enabled ifFalse: [ ^false ].
-	self arguments: (Dictionary new 
-		at: #context put: aContext; 
-		yourself).
-	^self behaviors allSatisfy: [ :behavior | behavior execute].
-	
 
+	<debuggerCompleteToSender>
+	self enabled ifFalse: [ ^ false ].
+	self saveContext: aContext.
+	^ self behaviors allSatisfy: [ :behavior | behavior execute ]
 ]
 
 { #category : 'initialization' }
@@ -215,6 +213,12 @@ DebugPoint >> removeFromMethod: aMethod [
 DebugPoint >> resetObjectScope [
 	self targetInstance: nil.
 	self link condition: nil arguments: nil
+]
+
+{ #category : 'API' }
+DebugPoint >> saveContext: aContext [
+
+	self arguments at: #context put: aContext
 ]
 
 { #category : 'API' }

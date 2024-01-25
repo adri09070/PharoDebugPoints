@@ -258,6 +258,36 @@ DebugPointTest >> testOnceBreakBehavior [
 ]
 
 { #category : 'running' }
+DebugPointTest >> testOnceEvaluatesAfterConditionBehavior [
+
+	| conditionBehavior |
+	conditionBehavior := ConditionBehavior new condition:
+		                     'corner = (300@200) '.
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      On: node
+		      withBehaviors: { OnceBehavior }.
+	dp addBehavior: conditionBehavior.
+	dp saveContext: context.
+
+	self assert: dp enabled.
+	self deny: conditionBehavior execute.
+
+	self shouldnt: [ dp hitWithContext: context ] raise: Break.
+
+	conditionBehavior condition: 'corner = (200 @ 200)'.
+
+	self assert: dp enabled.
+	self assert: conditionBehavior execute.
+
+	self should: [ dp hitWithContext: context ] raise: Break.
+
+	self deny: dp enabled.
+	self assert: conditionBehavior execute.
+	self shouldnt: [ dp hitWithContext: context ] raise: Break
+]
+
+{ #category : 'running' }
 DebugPointTest >> testScriptDebugPoint [
 
 	"dp := DebugPointManager installNew: TranscriptDebugPoint On: node."
