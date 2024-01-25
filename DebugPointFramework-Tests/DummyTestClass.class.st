@@ -12,6 +12,19 @@ Class {
 }
 
 { #category : 'accessing' }
+DummyTestClass >> id [
+
+	^ id
+]
+
+{ #category : 'accessing' }
 DummyTestClass >> id: anId [
 	^id := anId
+]
+
+{ #category : 'initialization' }
+DummyTestClass >> initialize [
+
+	super initialize.
+	id := 0
 ]

@@ -9,13 +9,13 @@ Class {
 }
 
 { #category : 'update' }
-DebugPointCodePresenter >> updateCode: aDebugPoint [ 
+DebugPointCodePresenter >> updateCode: aDebugPointNodeTarget [
 	"updates the code window with the code of the selected debug point"
-	aDebugPoint ifNil:[self text: ''.^self].
-	self text: aDebugPoint node methodNode sourceCode;
-		beForMethod: aDebugPoint node methodNode compiledMethod;
+	aDebugPointNodeTarget ifNil:[self text: ''.^self].
+	self text: aDebugPointNodeTarget sourceCode;
+		beForMethod: aDebugPointNodeTarget method;
 		addTextSegmentDecoration: 
 			(SpTextPresenterDecorator forHighlight
-         		interval: (aDebugPoint node start to: ((aDebugPoint node stop) +1));
+         		interval: (aDebugPointNodeTarget node start to: ((aDebugPointNodeTarget node stop) +1));
             yourself) .
 ]

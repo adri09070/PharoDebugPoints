@@ -10,9 +10,9 @@ Class {
 		'behaviors',
 		'arguments',
 		'metaLink',
-		'node',
 		'targetInstance',
-		'properties'
+		'properties',
+		'target'
 	],
 	#classVars : [
 		'AllDebugPoints'
@@ -68,6 +68,12 @@ DebugPoint >> behaviors [
 { #category : 'accessing' }
 DebugPoint >> behaviors: aSetOfBehaviors [
 	behaviors := aSetOfBehaviors 
+]
+
+{ #category : 'accessing' }
+DebugPoint >> browse [
+
+	^ self target browse
 ]
 
 { #category : 'reflective operations' }
@@ -155,13 +161,11 @@ DebugPoint >> name: aSymbol [
 ]
 
 { #category : 'accessing' }
-DebugPoint >> node [
-	^node
-]
-
-{ #category : 'accessing' }
 DebugPoint >> node: aNode [
-	node := aNode.
+
+	target := DebugPointNodeTarget new
+		          node: aNode;
+		          yourself
 ]
 
 { #category : 'accessing' }
@@ -231,6 +235,18 @@ DebugPoint >> setObjectScope: anObject [
 ]
 
 { #category : 'accessing' }
+DebugPoint >> target [
+
+	^ target
+]
+
+{ #category : 'accessing' }
+DebugPoint >> targetClass [
+
+	^ self target targetClass
+]
+
+{ #category : 'accessing' }
 DebugPoint >> targetInstance [
 	^targetInstance
 ]
@@ -240,14 +256,14 @@ DebugPoint >> targetInstance: anObject [
 	targetInstance := anObject 
 ]
 
+{ #category : 'description' }
+DebugPoint >> targetString [
+
+	^ self target targetString
+]
+
 { #category : 'accessing' }
 DebugPoint >> type [
 
 	^ #Debugpoint
-]
-
-{ #category : 'ui building' }
-DebugPoint >> uiElement [
-	^nil
-	
 ]

@@ -38,7 +38,7 @@ DebugPointSelectDialog >> initializePresenters [
 		        beForScripting;
 		        editable: false.
 	list whenSelectionChangedDo: [ :dp |
-		list selectedItem ifNotNil: [ code updateCode: list selectedItem ] ]
+		dp ifNotNil: [ dp updateDebugPointUIManager: self ] ]
 ]
 
 { #category : 'initialization' }
@@ -55,8 +55,7 @@ DebugPointSelectDialog >> initializeWindow: aWindowPresenter [
 DebugPointSelectDialog >> items: items [
 	"filter debug points such that only those that are attached to the class of the inspected object are displayed"
 
-	list items:
-		(items select: [ :db | db method methodClass = self scope ])
+	list items: (items select: [ :db | db targetClass = self scope ])
 ]
 
 { #category : 'accessing' }
@@ -68,4 +67,10 @@ DebugPointSelectDialog >> scope [
 DebugPointSelectDialog >> scope: anObject [ 
 "see items: method"
 	scope := anObject class
+]
+
+{ #category : 'update' }
+DebugPointSelectDialog >> updateCode: aDebugPointTarget [
+
+	code updateCode: list selectedItem
 ]

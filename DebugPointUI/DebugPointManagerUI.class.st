@@ -115,11 +115,13 @@ DebugPointManagerUI >> initializePresenters [
 
 { #category : 'initialization' }
 DebugPointManagerUI >> initializeTable [
+
 	dpTable := DebugPointTablePresenter new.
-	
-	dpTable whenSelectionChangedDo: [ :sel | 
+
+	dpTable whenSelectionChangedDo: [ :sel |
 		dpEditor debugPoint: dpTable selectedItem.
-		dpCode updateCode: dpTable selectedItem ].
+		dpTable selectedItem ifNotNil: [ :dp |
+			dp updateDebugPointUIManager: self ] ]
 ]
 
 { #category : 'initialization' }
@@ -141,6 +143,12 @@ DebugPointManagerUI >> items: aDebugPointCollection [
 { #category : 'enumerating' }
 DebugPointManagerUI >> select: aDebugPoint [
 	dpTable selectItem: aDebugPoint 
+]
+
+{ #category : 'update' }
+DebugPointManagerUI >> updateCode: aDebugPointTarget [
+
+	dpCode updateCode: aDebugPointTarget
 ]
 
 { #category : 'update' }
