@@ -6,7 +6,7 @@ Class {
 	#tag : 'Implementations'
 }
 
-{ #category : 'private' }
+{ #category : 'action' }
 DebugPointNodeTarget >> browse [
 
 	^ self method browse

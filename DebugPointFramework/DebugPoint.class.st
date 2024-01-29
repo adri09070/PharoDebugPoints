@@ -124,6 +124,19 @@ DebugPoint >> initialize [
 	self behaviors: (SortedCollection sortUsing: [ :elem1 :elem2 | elem1 priority >= elem2 priority]).
 ]
 
+{ #category : 'as yet unclassified' }
+DebugPoint >> instanceVariable: aSlot accessStrategy: aSymbol [
+
+	target := DebugPointInstanceVariableTarget new
+		          instanceVariable: aSlot;
+		          accessStrategy: aSymbol;
+		          yourself.
+
+	name := 'var_{1}_{2}' format: {
+			        aSlot name.
+			        aSymbol }
+]
+
 { #category : 'accessing' }
 DebugPoint >> link [
 	^metaLink

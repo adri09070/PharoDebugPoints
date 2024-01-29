@@ -9,7 +9,7 @@ Class {
 	#tag : 'Base'
 }
 
-{ #category : 'private' }
+{ #category : 'action' }
 DebugPointTarget >> browse [
 
 	self subclassResponsibility 
