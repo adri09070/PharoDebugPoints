@@ -124,7 +124,7 @@ DebugPoint >> initialize [
 	self behaviors: (SortedCollection sortUsing: [ :elem1 :elem2 | elem1 priority >= elem2 priority]).
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 DebugPoint >> instanceVariable: aSlot accessStrategy: aSymbol [
 
 	target := DebugPointInstanceVariableTarget new

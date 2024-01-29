@@ -44,24 +44,154 @@ DebugPointManager class >> installNew: aDebugPointClass On: aNode [
 { #category : 'API' }
 DebugPointManager class >> installNew: aDebugPointClass On: aNode withBehaviors: aListOfBehaviorClasses [
 	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
 	| dp ml |
+	dp := aDebugPointClass new
+		      node: aNode;
+		      yourself.
 
-	dp := aDebugPointClass new node: aNode.
 
 
-	
 	ml := dp metaLink.
 
 	dp link: ml.
 	aNode link: ml.
 	DebugPoint add: dp.
-	
-		"adding behaviors"	
-	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new].
-	
+
+	"adding behaviors"
+	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new ].
+
 	self notifyDebugPointAdded: dp.
-	
-	^dp	
+
+	^ dp
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableAccessNamed: aSlotNameSymbol [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #all
+		  withBehaviors: {  }
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableAccessNamed: aSlotNameSymbol withBehaviors: aListOfBehaviorClasses [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #all
+		  withBehaviors: aListOfBehaviorClasses
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableNamed: aSlotNameSymbol accessStrategy: anAccessStrategySymbol [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: anAccessStrategySymbol
+		  withBehaviors: {  }
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableNamed: aSlotNameSymbol accessStrategy: anAccessStrategySymbol withBehaviors: aListOfBehaviorClasses [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	| dp ml instanceVariable |
+	instanceVariable := aClass slotNamed: aSlotNameSymbol.
+	dp := aDebugPointClass new
+		      instanceVariable: instanceVariable
+		      accessStrategy: anAccessStrategySymbol;
+		      yourself.
+
+	ml := dp metaLink.
+
+	dp link: ml.
+	aClass
+		link: ml
+		toSlotNamed: aSlotNameSymbol
+		option: anAccessStrategySymbol.
+	DebugPoint add: dp.
+
+	"adding behaviors"
+	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new ].
+
+	self notifyDebugPointAdded: dp.
+
+	^ dp
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableReadNamed: aSlotNameSymbol [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #read
+		  withBehaviors: {  }
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableReadNamed: aSlotNameSymbol withBehaviors: aListOfBehaviorClasses [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #read
+		  withBehaviors: aListOfBehaviorClasses
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableWriteNamed: aSlotNameSymbol [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #write
+		  withBehaviors: {  }
+]
+
+{ #category : 'API' }
+DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariableWriteNamed: aSlotNameSymbol withBehaviors: aListOfBehaviorClasses [
+	"access strategy can be #all or #read or #write"
+
+	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
+
+	^ self
+		  installNew: aDebugPointClass
+		  inClass: aClass
+		  onVariableNamed: aSlotNameSymbol
+		  accessStrategy: #write
+		  withBehaviors: aListOfBehaviorClasses
 ]
 
 { #category : 'announcements' }
