@@ -71,6 +71,40 @@ DebugPointTest >> testBreakDebugPoint [
 ]
 
 { #category : 'running' }
+DebugPointTest >> testBreakDebugPointOnVariableAccess [
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      inClass: DummyTestClass
+		      onVariableAccessNamed: #id.
+	self should: [ DummyTestClass new ] raise: Break.
+	self should: [ DummyTestClass basicNew id ] raise: Break.
+	self shouldnt: [ DummyTestClass basicNew ] raise: Break
+]
+
+{ #category : 'running' }
+DebugPointTest >> testBreakDebugPointOnVariableRead [
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      inClass: DummyTestClass
+		      onVariableReadNamed: #id.
+	self should: [ DummyTestClass basicNew id ] raise: Break.
+	self shouldnt: [ DummyTestClass new ] raise: Break
+]
+
+{ #category : 'running' }
+DebugPointTest >> testBreakDebugPointOnVariableWrite [
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      inClass: DummyTestClass
+		      onVariableWriteNamed: #id.
+	self should: [ DummyTestClass new ] raise: Break.
+	self shouldnt: [ DummyTestClass basicNew id ] raise: Break
+]
+
+{ #category : 'running' }
 DebugPointTest >> testChainBehaviorHitWithContext [
 
 	dp := DebugPointManager
