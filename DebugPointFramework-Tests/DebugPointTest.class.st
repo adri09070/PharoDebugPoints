@@ -83,6 +83,24 @@ DebugPointTest >> testBreakDebugPointOnVariableAccess [
 ]
 
 { #category : 'running' }
+DebugPointTest >> testBreakDebugPointOnVariableDetectsNewVariableAccessAfterCompilingNewMethod [
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      inClass: DummyTestClass
+		      onVariableWriteNamed: #id.
+	self deny: (DummyTestClass includesSelector: #id2:).
+
+	[
+	DummyTestClass compiler
+		source: 'id2: aNumber
+		id := aNumber';
+		install.
+	self should: [ DummyTestClass basicNew id2: 42 ] raise: Break ]
+		ensure: [ DummyTestClass removeSelector: #id2: ]
+]
+
+{ #category : 'running' }
 DebugPointTest >> testBreakDebugPointOnVariableRead [
 
 	dp := DebugPointManager
