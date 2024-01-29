@@ -3,7 +3,8 @@ Class {
 	#superclass : 'DebugPointTarget',
 	#instVars : [
 		'onRead',
-		'onWrite'
+		'onWrite',
+		'accessStrategy'
 	],
 	#category : 'DebugPointFramework-Implementations',
 	#package : 'DebugPointFramework',
@@ -11,10 +12,17 @@ Class {
 }
 
 { #category : 'accessing' }
+DebugPointInstanceVariableTarget >> accessStrategy [
+
+	^ accessStrategy
+]
+
+{ #category : 'accessing' }
 DebugPointInstanceVariableTarget >> accessStrategy: aSymbol [
 
 	onRead := #( #read #all ) includes: aSymbol.
-	onWrite := #( #write #all ) includes: aSymbol
+	onWrite := #( #write #all ) includes: aSymbol.
+	accessStrategy := aSymbol
 ]
 
 { #category : 'action' }
@@ -27,6 +35,12 @@ DebugPointInstanceVariableTarget >> browse [
 ]
 
 { #category : 'accessing' }
+DebugPointInstanceVariableTarget >> impactedNodes [
+
+	^ self instanceVariable accessingNodesFor: self accessStrategy
+]
+
+{ #category : 'accessing' }
 DebugPointInstanceVariableTarget >> instanceVariable [
 
 	^ self target
@@ -36,6 +50,36 @@ DebugPointInstanceVariableTarget >> instanceVariable [
 DebugPointInstanceVariableTarget >> instanceVariable: anInstanceVariable [
 
 	self target: anInstanceVariable
+]
+
+{ #category : 'testing' }
+DebugPointInstanceVariableTarget >> isReadOnly [
+
+	^ accessStrategy = #read
+]
+
+{ #category : 'testing' }
+DebugPointInstanceVariableTarget >> isReadWrite [
+
+	^ accessStrategy = #all
+]
+
+{ #category : 'testing' }
+DebugPointInstanceVariableTarget >> isWriteOnly [
+
+	^ accessStrategy = #write
+]
+
+{ #category : 'accessing' }
+DebugPointInstanceVariableTarget >> onRead [
+
+	^ onRead
+]
+
+{ #category : 'accessing' }
+DebugPointInstanceVariableTarget >> onWrite [
+
+	^ onWrite
 ]
 
 { #category : 'accessing' }
