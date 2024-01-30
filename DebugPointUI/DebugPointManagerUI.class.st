@@ -10,7 +10,8 @@ Class {
 		'dpEditor',
 		'dpCode',
 		'inputFilter',
-		'selectAllCheckbox'
+		'selectAllCheckbox',
+		'variableTargetPresenter'
 	],
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
@@ -110,7 +111,8 @@ DebugPointManagerUI >> initializePresenters [
 		               yourself.
 	selectAllCheckbox := self newCheckBox
 		                     label: '(De)activate all';
-		                     yourself
+		                     yourself.
+	self initializeVariableTargetPresenter
 ]
 
 { #category : 'initialization' }
@@ -122,6 +124,12 @@ DebugPointManagerUI >> initializeTable [
 		dpEditor debugPoint: dpTable selectedItem.
 		dpTable selectedItem ifNotNil: [ :dp |
 			dp updateDebugPointUIManager: self ] ]
+]
+
+{ #category : 'initialization' }
+DebugPointManagerUI >> initializeVariableTargetPresenter [
+
+	variableTargetPresenter := DebugPointVariableTargetPresenter new
 ]
 
 { #category : 'initialization' }
@@ -167,4 +175,31 @@ DebugPointManagerUI >> updateTable [
 	dpTable selectItem: prevSel.
 
 	
+]
+
+{ #category : 'update' }
+DebugPointManagerUI >> updateVariableTargetPresenterFrom: aDebugPointTarget [
+
+	variableTargetPresenter target: aDebugPointTarget
+]
+
+{ #category : 'layout' }
+DebugPointManagerUI >> variableTargetLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: (SpBoxLayout newLeftToRight
+				   add: selectAllCheckbox expand: false;
+				   add: inputFilter;
+				   yourself)
+		  expand: false;
+		  add: (SpPanedLayout newLeftToRight
+				   add: (SpPanedLayout newTopToBottom
+						    add: dpTable;
+						    add: variableTargetPresenter;
+						    positionOfSlider: 40 percent;
+						    yourself);
+				   add: dpEditor;
+				   positionOfSlider: 50 percent;
+				   yourself);
+		  yourself
 ]
