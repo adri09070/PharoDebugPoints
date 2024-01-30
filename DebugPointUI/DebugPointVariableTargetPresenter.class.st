@@ -19,9 +19,8 @@ Class {
 { #category : 'initialization' }
 DebugPointVariableTargetPresenter >> connectPresenters [
 
-	impactedMethodList whenSelectionChangedDo: [ :methodOrBlock |
-		methodOrBlock ifNotNil: [
-			self updateCodeFromMethod: methodOrBlock ] ].
+	impactedMethodList transmitDo: [ :methodOrBlock |
+		methodOrBlock ifNotNil: [ self updateCodeFromMethod: methodOrBlock ] ].
 
 	"implement radio button activation"
 	self setupRadioButtonActivationListeners
@@ -33,13 +32,17 @@ DebugPointVariableTargetPresenter >> defaultLayout [
 	^ self newBoxLayoutTopToBottom
 		  add: (self newBoxLayoutLeftToRight
 				   add: readCheckbox expand: false;
-				   add: writeCheckbox expand: false;
-				   add: readWriteCheckbox expand: false;
-				   add: toolbar expand: false)
+				   add: writeCheckbox expand: false)
 		  expand: false;
-		  add: (self newPanedLayoutLeftToRight
+		  add: (self newBoxLayoutLeftToRight
+				   add: readWriteCheckbox expand: false;
+				   add: toolbar expand: false;
+				   yourself)
+		  expand: false;
+		  add: (self newPanedLayoutTopToBottom
 				   add: impactedMethodList;
 				   add: codePresenter;
+				   positionOfSlider: 30 percent;
 				   yourself);
 		  yourself
 ]
@@ -94,9 +97,9 @@ DebugPointVariableTargetPresenter >> initializeReadRadioButton [
 { #category : 'initialization' }
 DebugPointVariableTargetPresenter >> initializeReadWriteRadioButton [
 
-	readCheckbox := self newRadioButton
-		                label: 'read / write';
-		                yourself
+	readWriteCheckbox := self newRadioButton
+		                     label: 'read / write';
+		                     yourself
 ]
 
 { #category : 'initialization' }
@@ -115,9 +118,9 @@ DebugPointVariableTargetPresenter >> initializeToolbar [
 { #category : 'initialization' }
 DebugPointVariableTargetPresenter >> initializeWriteRadioButton [
 
-	readCheckbox := self newRadioButton
-		                label: 'write only';
-		                yourself
+	writeCheckbox := self newRadioButton
+		                 label: 'write only';
+		                 yourself
 ]
 
 { #category : 'initialization' }
@@ -139,8 +142,7 @@ DebugPointVariableTargetPresenter >> target [
 DebugPointVariableTargetPresenter >> target: aDebugPointInstanceVariableTarget [
 
 	target := aDebugPointInstanceVariableTarget.
-	self updateImpactedNodesCache.
-	self updateRadioButtonsState
+	self updatePresenter
 ]
 
 { #category : 'initialization' }
