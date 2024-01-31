@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddTranscriptDebugPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddTranscriptDebugPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddTranscriptDebugPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddTranscriptDebugPointCommand class >> contextMenuOrder [
 	^4
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddTranscriptDebugPointCommand >> defaultMenuIconName [
 	^#transcript
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddTranscriptDebugPointCommand >> defaultMenuItemName [
 	^' Add Transcript to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddTranscriptDebugPointCommand >> execute [
 
 	| dp | 
@@ -37,7 +38,7 @@ ClyAddTranscriptDebugPointCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddTranscriptDebugPointCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

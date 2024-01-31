@@ -1,6 +1,6 @@
-Extension { #name : #RBProgramNode }
+Extension { #name : 'RBProgramNode' }
 
-{ #category : #'*DebugPointCalypso' }
+{ #category : '*DebugPointCalypso' }
 RBProgramNode >> hasDebugPointOfType: aDebugPointSubClass [
 	
 	^self links anySatisfy: [ :link | link metaObject isKindOf: aDebugPointSubClass ]

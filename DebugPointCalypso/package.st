@@ -1,1 +1,1 @@
-Package { #name : #DebugPointCalypso }
+Package { #name : 'DebugPointCalypso' }

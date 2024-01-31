@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddCountDebugPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddCountDebugPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddCountDebugPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddCountDebugPointCommand class >> contextMenuOrder [
 	^4
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddCountDebugPointCommand >> defaultMenuIconName [
 	^#smallDebug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddCountDebugPointCommand >> defaultMenuItemName [
 	^' Add Counter to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddCountDebugPointCommand >> execute [
 
 	| dp | 

@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddConditionBreakCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddConditionBreakCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddConditionBreakCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddConditionBreakCommand class >> contextMenuOrder [
 	^3
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddConditionBreakCommand >> defaultMenuIconName [
 	^#smallError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddConditionBreakCommand >> defaultMenuItemName [
 	^' Add Condition Breakpoint to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddConditionBreakCommand >> execute [
 
 	| dp |
@@ -38,7 +39,7 @@ ClyAddConditionBreakCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddConditionBreakCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

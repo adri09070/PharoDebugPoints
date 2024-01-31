@@ -1,33 +1,34 @@
 Class {
-	#name : #SycOpenDebuggingPointsMenuCommand,
-	#superclass : #SycOpenContextMenuCommand,
-	#category : #DebugPointCalypso
+	#name : 'SycOpenDebuggingPointsMenuCommand',
+	#superclass : 'SycOpenContextMenuCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 SycOpenDebuggingPointsMenuCommand class >> sourceCodeMenuActivation [
 	<classAnnotation>
 	
 	^CmdContextMenuActivation byRootGroupItemOrder: 0.2 for: ClySourceCodeContext
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 SycOpenDebuggingPointsMenuCommand >> activationStrategy [
 	^SycDebuggingPointsMenuActivation
 ]
 
-{ #category : #'context menu' }
+{ #category : 'context menu' }
 SycOpenDebuggingPointsMenuCommand >> cmCommandClass [
 
 	^ SycSourceCodeCmCommand
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SycOpenDebuggingPointsMenuCommand >> defaultMenuIconName [
 	^ #smallDebug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SycOpenDebuggingPointsMenuCommand >> defaultMenuItemName [
 
 	^ 'Debug Points'

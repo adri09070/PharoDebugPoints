@@ -1,5 +1,6 @@
 Class {
-	#name : #SycDebuggingPointsMenuActivation,
-	#superclass : #CmdMenuCommandActivationStrategy,
-	#category : #DebugPointCalypso
+	#name : 'SycDebuggingPointsMenuActivation',
+	#superclass : 'CmdMenuCommandActivationStrategy',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }

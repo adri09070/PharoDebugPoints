@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddScriptDebugPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddScriptDebugPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddScriptDebugPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddScriptDebugPointCommand class >> contextMenuOrder [
 	^4
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddScriptDebugPointCommand >> defaultMenuIconName [
 	^#smallDebug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddScriptDebugPointCommand >> defaultMenuItemName [
 	^' Add Script to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddScriptDebugPointCommand >> execute [
 
 	| dp | 
@@ -38,7 +39,7 @@ ClyAddScriptDebugPointCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddScriptDebugPointCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

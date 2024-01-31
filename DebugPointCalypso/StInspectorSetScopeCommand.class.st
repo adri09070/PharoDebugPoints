@@ -2,34 +2,35 @@
 Adds an icon in the inspector where you can set the scope of a debug point to the inspected object.
 "
 Class {
-	#name : #StInspectorSetScopeCommand,
-	#superclass : #StInspectorCommand,
-	#category : #DebugPointCalypso
+	#name : 'StInspectorSetScopeCommand',
+	#superclass : 'StInspectorCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 StInspectorSetScopeCommand class >> defaultDescription [ 
 	^'Change the scope of a debug point to this object'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 StInspectorSetScopeCommand class >> defaultIconName [ 
 	^#smallDebug
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 StInspectorSetScopeCommand class >> defaultName [
 	<toolbarInspectCommand: 1>
 	
 	^'Set Scope'
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 StInspectorSetScopeCommand class >> documentContextRequiredSelectors [ 
 	^super documentContextRequiredSelectors, #(selectedObject)
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 StInspectorSetScopeCommand >> execute [ 
 	| debugPoint |
 	debugPoint := DebugPointSelectDialog new scope: self interestingObject; items: DebugPoint all asOrderedCollection ;

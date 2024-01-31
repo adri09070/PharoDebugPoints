@@ -1,6 +1,6 @@
-Extension { #name : #IconStyler }
+Extension { #name : 'IconStyler' }
 
-{ #category : #'*DebugPointCalypso' }
+{ #category : '*DebugPointCalypso' }
 IconStyler class >> withStaticStylers [
 	"Configure the receiver to invoke several static stylers. Now it is probably better to use the instance API:
 	

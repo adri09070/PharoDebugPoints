@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddOnceBreakPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddOnceBreakPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddOnceBreakPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddOnceBreakPointCommand class >> contextMenuOrder [
 	^2
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddOnceBreakPointCommand >> defaultMenuIconName [
 	^#smallError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddOnceBreakPointCommand >> defaultMenuItemName [
 	^' Add Once Breakpoint to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddOnceBreakPointCommand >> execute [
 
 	| dp | 

@@ -2,12 +2,13 @@
 I style the the code window of the calypso browser to show debug points.
 "
 Class {
-	#name : #DebugPointIconStyler,
-	#superclass : #IconStyler,
-	#category : #DebugPointCalypso
+	#name : 'DebugPointIconStyler',
+	#superclass : 'IconStyler',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> addIconStyle: aNode from: start to: stop color: aColor [
 	"there probably is a better way that just adding a second row but i couldn't figure out rubric"
 	| conf |
@@ -62,18 +63,18 @@ DebugPointIconStyler >> addIconStyle: aNode from: start to: stop color: aColor [
 	textModel announce: conf"
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DebugPointIconStyler >> allDebugPointsOn: aNode [
 
 	^(aNode links select: [ :link | link metaObject isKindOf: self forClass ]) collect: [:link | link metaObject].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DebugPointIconStyler >> debugPointOn: aNode [
 	^(aNode links detect: [ :link | link metaObject isKindOf: self forClass ]) metaObject.
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> disableIcon: anIcon dp: dp [
 
 	dp enabled ifFalse: [
@@ -85,12 +86,12 @@ DebugPointIconStyler >> disableIcon: anIcon dp: dp [
 	^anIcon
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 DebugPointIconStyler >> forClass [
 	^DebugPoint
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> hasBehaviorIcon: anIcon dp: dp [
 
 	(dp behaviors ) ifNotEmpty: [ ^anIcon mergeWith: (((self iconNamed: #smallCogInitialState)scaledToSize: 9@9)darker: 1 ) at: 8@0 ].
@@ -110,31 +111,31 @@ DebugPointIconStyler >> hasBehaviorIcon: anIcon dp: dp [
 		]."
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> highlightColor [
 	^(Color yellow alpha: 0.3)
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> icon: dp [
 	
 	^ dp properties at: #Icon ifAbsent: [ #smallDebug ].
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> iconBlock: dp [
 
 	^[ :seg | DebugPointManagerUI new open; select: dp. ]
 
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> iconBlockEdit: dp [
 		 ^ [ :seg | dp remove.
 	   seg delete ]
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> iconFor: dp [
 	| icon |
 	icon := (self iconNamed: (self icon: dp)) deepCopy.
@@ -144,7 +145,7 @@ DebugPointIconStyler >> iconFor: dp [
 	^ icon
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 DebugPointIconStyler >> iconLabel: dp [
 	"| dp | 
 	dp := (self debugPointOn: aNode)."
@@ -152,7 +153,7 @@ DebugPointIconStyler >> iconLabel: dp [
 	^ dp name
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DebugPointIconStyler >> shouldStyleNode: aNode [
 
 	^aNode hasDebugPointOfType: self forClass

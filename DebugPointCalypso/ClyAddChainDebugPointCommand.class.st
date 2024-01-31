@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddChainDebugPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddChainDebugPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddChainDebugPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddChainDebugPointCommand class >> contextMenuOrder [
 	^4
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddChainDebugPointCommand >> defaultMenuIconName [
 	^#smallDebug
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddChainDebugPointCommand >> defaultMenuItemName [
 	^' Add Chain Link to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddChainDebugPointCommand >> execute [
 
 	| dp |

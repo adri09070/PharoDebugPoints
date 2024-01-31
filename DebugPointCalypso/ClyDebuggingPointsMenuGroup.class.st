@@ -1,15 +1,17 @@
 Class {
-	#name : #ClyDebuggingPointsMenuGroup,
-	#superclass : #CmdMenuGroup,
-	#category : #DebugPointCalypso
+	#name : 'ClyDebuggingPointsMenuGroup',
+	#superclass : 'CmdMenuGroup',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyDebuggingPointsMenuGroup >> isInlined [
-	^true
+
+	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyDebuggingPointsMenuGroup >> order [
 	^0.9
 ]

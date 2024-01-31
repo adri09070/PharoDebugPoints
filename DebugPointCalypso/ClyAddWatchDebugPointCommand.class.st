@@ -1,31 +1,32 @@
 Class {
-	#name : #ClyAddWatchDebugPointCommand,
-	#superclass : #ClyDebuggingPointsCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyAddWatchDebugPointCommand',
+	#superclass : 'ClyDebuggingPointsCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyAddWatchDebugPointCommand class >> canBeExecutedInContext: aBrowserContext [
 
 	^ (super canBeExecutedInContext: aBrowserContext)
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyAddWatchDebugPointCommand class >> contextMenuOrder [
 	^4
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddWatchDebugPointCommand >> defaultMenuIconName [
 	^#history
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ClyAddWatchDebugPointCommand >> defaultMenuItemName [
 	^' Add Watch to: ',  sourceNode displaySourceCode
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyAddWatchDebugPointCommand >> execute [
 
 	| dp | 

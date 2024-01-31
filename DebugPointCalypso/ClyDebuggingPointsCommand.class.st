@@ -2,23 +2,24 @@
 I am the superclass for all menu entries in the ""Debug Points"" menu entry when right clicking in a code presenter.
 "
 Class {
-	#name : #ClyDebuggingPointsCommand,
-	#superclass : #ClyDebuggingCommand,
-	#category : #DebugPointCalypso
+	#name : 'ClyDebuggingPointsCommand',
+	#superclass : 'ClyDebuggingCommand',
+	#category : 'DebugPointCalypso',
+	#package : 'DebugPointCalypso'
 }
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyDebuggingPointsCommand class >> contextMenuOrder [
 	<classAnnotationDependency>
 	^ 1.8
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ClyDebuggingPointsCommand class >> isAbstract [
 	^self == ClyDebuggingPointsCommand 
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyDebuggingPointsCommand class >> methodContextMenuActivation [
 
 	<classAnnotation>
@@ -28,7 +29,7 @@ ClyDebuggingPointsCommand class >> methodContextMenuActivation [
 		  for: ClyMethod asCalypsoItemContext
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyDebuggingPointsCommand class >> methodEditorLeftBarMenuActivation [
 
 	<classAnnotation>
@@ -38,7 +39,7 @@ ClyDebuggingPointsCommand class >> methodEditorLeftBarMenuActivation [
 		  for: ClyMethodSourceCodeContext
 ]
 
-{ #category : #activation }
+{ #category : 'activation' }
 ClyDebuggingPointsCommand class >> sourceCodeMenuActivation [
 
 	<classAnnotation>
@@ -48,7 +49,7 @@ ClyDebuggingPointsCommand class >> sourceCodeMenuActivation [
 		  for: ClyMethodSourceCodeContext
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 ClyDebuggingPointsCommand >> putIconInProperties: dp [
 	dp properties at: #Icon put: self defaultMenuIconName.
 	DebugPointManager notifyDebugPointChanged: dp.
