@@ -38,11 +38,11 @@ DebugPointTest >> setUpContext [
 ]
 
 { #category : 'running' }
-DebugPointTest >> tearDown [ 
-	
-	dp remove.
-	dp2 ifNotNil: [dp2 remove].
-	super tearDown.
+DebugPointTest >> tearDown [
+
+	dp ifNotNil: [ dp remove ].
+	dp2 ifNotNil: [ dp2 remove ].
+	super tearDown
 ]
 
 { #category : 'running' }
