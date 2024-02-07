@@ -32,7 +32,7 @@ DebugPointObjectTarget >> install: aLink [
 { #category : 'accessing' }
 DebugPointObjectTarget >> scope [
 
-	^ self targetInstance
+	^ 'obj {1}' format: { self targetInstance }
 ]
 
 { #category : 'accessing' }

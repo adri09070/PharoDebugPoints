@@ -21,5 +21,5 @@ DebugPointClassTarget >> install: aLink on: aClassOrObject [
 { #category : 'accessing' }
 DebugPointClassTarget >> scope [
 
-	^ self targetClass
+	^ 'class {1}' format: { self targetClass }
 ]
