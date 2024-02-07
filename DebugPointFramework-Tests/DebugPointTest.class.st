@@ -288,6 +288,122 @@ DebugPointTest >> testCountBehavior [
 ]
 
 { #category : 'running' }
+DebugPointTest >> testObjectCentricBreakDebugPoint [
+
+	| obj obj2 |
+	obj := DummyTestClass new.
+	obj2 := DummyTestClass new.
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      On: node
+		      forObject: obj.
+
+	self should: [ dp hitWithContext: context ] raise: Break.
+	self should: [ obj id: 2 ] raise: Break.
+	self shouldnt: [ obj2 id: 2 ] raise: Break
+]
+
+{ #category : 'running' }
+DebugPointTest >> testObjectCentricBreakDebugPointOnVariableRead [
+
+	| obj obj2 |
+	obj := DummyTestClass new.
+	obj2 := DummyTestClass new.
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      forObject: obj
+		      onVariableReadNamed: #id.
+	self should: [ obj id ] raise: Break.
+	self shouldnt: [ obj2 id ] raise: Break.
+	self shouldnt: [ obj id: 2 ] raise: Break
+]
+
+{ #category : 'running' }
+DebugPointTest >> testObjectCentricBreakOnceOnVariable [
+
+	| obj |
+	obj := DummyTestClass new.
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      forObject: obj
+		      onVariableWriteNamed: #id
+		      withBehaviors: { OnceBehavior }.
+	self shouldnt: [ DummyTestClass new ] raise: Break.
+	self should: [ obj id: 2 ] raise: Break.
+	self shouldnt: [ obj id: 3 ] raise: Break
+]
+
+{ #category : 'running' }
+DebugPointTest >> testObjectCentricWatchDebugPoint [
+
+	| his obj |
+	"watches the values of argument variable `anId`"
+	obj := DummyTestClass basicNew.
+	dp := DebugPointManager
+		      installNew: WatchDebugPoint
+		      forObject: obj
+		      onVariableWriteNamed: #id.
+	his := OrderedCollection new.
+
+	"check empty history"
+	self assertCollection: dp history equals: his.
+	"check history after hitting dp"
+	obj initialize.
+	his addFirst: 0.
+	self assertCollection: dp history equals: his.
+	"once more"
+	DummyTestClass new id: 2.
+	self assertCollection: dp history equals: his.
+	"once more"
+	obj id: 'string'.
+	his addFirst: 'string'.
+	self assertCollection: dp history equals: his.
+	"once more"
+	obj id: 'string2'.
+	his addFirst: 'string2'.
+	self assertCollection: dp history equals: his.
+	"check if limit is applied correctly"
+	dp limit: 2.
+	his removeLast.
+	self assertCollection: dp history equals: his.
+	"hitting does not change the history size anymore"
+	obj id: 42.
+	his addFirst: 42.
+	his removeLast.
+	self assertCollection: dp history equals: his
+]
+
+{ #category : 'running' }
+DebugPointTest >> testObjectCentricWatchOnceDebugPoint [
+
+	| his obj |
+	"watches the values of argument variable `anId`"
+	obj := DummyTestClass new.
+	dp := DebugPointManager
+		      installNew: WatchDebugPoint
+		      forObject: obj
+		      onVariableWriteNamed: #id
+		      withBehaviors: { OnceBehavior }.
+
+	his := OrderedCollection new.
+
+	"check empty history"
+	self assertCollection: dp history equals: his.
+	"check history after not hitting dp"
+	DummyTestClass new id: 2.
+	self assertCollection: dp history equals: his.
+	"check history after hitting dp"
+	obj id: 2.
+	his addFirst: 2.
+	self assertCollection: dp history equals: his.
+	"once more"
+	obj id: 'string'.
+	self assertCollection: dp history equals: his
+]
+
+{ #category : 'running' }
 DebugPointTest >> testOnceBehavior [
 	dp := DebugPointManager installNew: DebugPoint On: node.
 	dp addBehavior: (OnceBehavior new).
@@ -307,6 +423,18 @@ DebugPointTest >> testOnceBreakBehavior [
 	self assert: (dp enabled) equals: false.
 	self shouldnt: [dp hitWithContext: context] raise: Break.
 
+]
+
+{ #category : 'running' }
+DebugPointTest >> testOnceBreakOnVariable [
+
+	dp := DebugPointManager
+		      installNew: BreakDebugPoint
+		      inClass: DummyTestClass
+		      onVariableWriteNamed: #id
+		      withBehaviors: { OnceBehavior }.
+	self should: [ DummyTestClass new ] raise: Break.
+	self shouldnt: [ DummyTestClass basicNew id: 2 ] raise: Break
 ]
 
 { #category : 'running' }
