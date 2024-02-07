@@ -31,6 +31,12 @@ DebugPointTarget >> install: aLink [
 ]
 
 { #category : 'accessing' }
+DebugPointTarget >> scope [
+
+	^ self subclassResponsibility
+]
+
+{ #category : 'accessing' }
 DebugPointTarget >> target [
 
 	^ target

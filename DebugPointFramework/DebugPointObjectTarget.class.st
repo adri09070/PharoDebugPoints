@@ -30,6 +30,12 @@ DebugPointObjectTarget >> install: aLink [
 ]
 
 { #category : 'accessing' }
+DebugPointObjectTarget >> scope [
+
+	^ self targetInstance
+]
+
+{ #category : 'accessing' }
 DebugPointObjectTarget >> subTarget [
 
 	^ subTarget

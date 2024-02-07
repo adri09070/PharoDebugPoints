@@ -17,3 +17,9 @@ DebugPointClassTarget >> install: aLink on: aClassOrObject [
 
 	self subclassResponsibility
 ]
+
+{ #category : 'accessing' }
+DebugPointClassTarget >> scope [
+
+	^ self targetClass
+]

@@ -33,7 +33,7 @@ DebugPointTablePresenter >> debugPointContextMenu [
 						  description:
 							  'inspect the current scope of the selected debug point';
 						  enabled: [ self selectedItem isNotNil ];
-						  action: [ self selectedItem targetInstance inspect ] ];
+						  action: [ self selectedItem scope inspect ] ];
 				  addItem: [ :anItem |
 					  anItem
 						  name: 'Reset Current Scope';
@@ -93,9 +93,10 @@ DebugPointTablePresenter >> initializeDebugPointTable [
 				  evaluated: [ :item | item name ])
 				 beEditable;
 				 onAcceptEdition: [ :item :newName | item name: newName asSymbol ]);
-		addColumn: (SpStringTableColumn
-				 title: 'Scope'
-				 evaluated: [ :item | item targetInstance ]);
+		addColumn:
+		(SpStringTableColumn
+			 title: 'Scope'
+			 evaluated: [ :item | item scope ]);
 		contextMenu: self debugPointContextMenu.
 	self items: DebugPoint all asOrderedCollection.
 
