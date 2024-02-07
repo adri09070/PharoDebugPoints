@@ -31,12 +31,17 @@ StInspectorSetScopeCommand class >> documentContextRequiredSelectors [
 ]
 
 { #category : 'execution' }
-StInspectorSetScopeCommand >> execute [ 
+StInspectorSetScopeCommand >> execute [
+
 	| debugPoint |
-	debugPoint := DebugPointSelectDialog new scope: self interestingObject; items: DebugPoint all asOrderedCollection ;
-		label: 'The scope of the selected debug point will be set to the inspected object';
-		title: 'Select Debug Point';
-		openModal.
-		
-	debugPoint ifNotNil: [ :dp | dp setObjectScope: self interestingObject ]
+	debugPoint := DebugPointSelectDialog new
+		              scope: self interestingObject;
+		              items: DebugPoint all asOrderedCollection;
+		              label:
+			              'The scope of the selected debug point will be set to the inspected object';
+		              title: 'Select Debug Point';
+		              openModal.
+
+	debugPoint ifNotNil: [ :dp |
+		dp targetInstance: self interestingObject ]
 ]

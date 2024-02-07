@@ -9,6 +9,15 @@ Class {
 	#tag : 'Base'
 }
 
+{ #category : 'api - model' }
+DebugPointTarget >> beForObject: anObject [
+
+	^ DebugPointObjectTarget new
+		  targetInstance: anObject;
+		  subTarget: self;
+		  yourself
+]
+
 { #category : 'action' }
 DebugPointTarget >> browse [
 

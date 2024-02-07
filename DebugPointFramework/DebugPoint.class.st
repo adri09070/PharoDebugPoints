@@ -245,13 +245,10 @@ DebugPoint >> saveContext: aContext [
 	self arguments at: #context put: aContext
 ]
 
-{ #category : 'API' }
-DebugPoint >> setObjectScope: anObject [
+{ #category : 'accessing' }
+DebugPoint >> scope [
 
-	"this might get changed such that the metalink will be attached to the instance directly instead of checking on all instances"
-	anObject ifNil: [ self resetObjectScope ].
-	self targetInstance: anObject.
-	self link condition: [ :ctx | ctx receiver == self targetInstance ] arguments: #(context).
+	^ self target scope
 ]
 
 { #category : 'accessing' }
@@ -273,7 +270,8 @@ DebugPoint >> targetInstance [
 
 { #category : 'accessing' }
 DebugPoint >> targetInstance: anObject [
-	targetInstance := anObject 
+
+	target := self target beForObject: anObject
 ]
 
 { #category : 'description' }
