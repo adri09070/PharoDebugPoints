@@ -35,6 +35,24 @@ DebugPointManager class >> initialize [
 	self registerInterestToSystemAnnouncement
 ]
 
+{ #category : 'private - helpers' }
+DebugPointManager class >> installDebugPoint: dp withBehaviors: aListOfBehaviorClasses [
+
+	| ml |
+	ml := dp metaLink.
+
+	dp link: ml.
+	dp install.
+	DebugPoint add: dp.
+
+	"adding behaviors"
+	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new ].
+
+	self notifyDebugPointAdded: dp.
+
+	^ dp
+]
+
 { #category : 'API' }
 DebugPointManager class >> installNew: aDebugPointClass On: aNode [
 
@@ -45,25 +63,14 @@ DebugPointManager class >> installNew: aDebugPointClass On: aNode [
 DebugPointManager class >> installNew: aDebugPointClass On: aNode withBehaviors: aListOfBehaviorClasses [
 	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
 
-	| dp ml |
+	| dp |
 	dp := aDebugPointClass new
 		      node: aNode;
 		      yourself.
 
-
-
-	ml := dp metaLink.
-
-	dp link: ml.
-	aNode link: ml.
-	DebugPoint add: dp.
-
-	"adding behaviors"
-	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new ].
-
-	self notifyDebugPointAdded: dp.
-
-	^ dp
+	^ self
+		  installDebugPoint: dp
+		  withBehaviors: aListOfBehaviorClasses
 ]
 
 { #category : 'API' }
@@ -114,28 +121,14 @@ DebugPointManager class >> installNew: aDebugPointClass inClass: aClass onVariab
 
 	"this should be the single point of installation for debug points, removal is in the remove method of debug point instances"
 
-	| dp ml instanceVariable |
+	| dp instanceVariable |
 	instanceVariable := aClass slotNamed: aSlotNameSymbol.
 	dp := aDebugPointClass new
 		      instanceVariable: instanceVariable
 		      accessStrategy: anAccessStrategySymbol;
 		      yourself.
 
-	ml := dp metaLink.
-
-	dp link: ml.
-	aClass
-		link: ml
-		toSlotNamed: aSlotNameSymbol
-		option: anAccessStrategySymbol.
-	DebugPoint add: dp.
-
-	"adding behaviors"
-	aListOfBehaviorClasses do: [ :bhc | dp addBehavior: bhc new ].
-
-	self notifyDebugPointAdded: dp.
-
-	^ dp
+	^ self installDebugPoint: dp withBehaviors: aListOfBehaviorClasses
 ]
 
 { #category : 'API' }

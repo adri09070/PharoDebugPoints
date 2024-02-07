@@ -124,6 +124,13 @@ DebugPoint >> initialize [
 	self behaviors: (SortedCollection sortUsing: [ :elem1 :elem2 | elem1 priority >= elem2 priority]).
 ]
 
+{ #category : 'actions' }
+DebugPoint >> install [
+
+	self link uninstall.
+	self target install: self link
+]
+
 { #category : 'accessing' }
 DebugPoint >> instanceVariable: aSlot accessStrategy: aSymbol [
 

@@ -1,6 +1,6 @@
 Class {
 	#name : 'DebugPointInstanceVariableTarget',
-	#superclass : 'DebugPointTarget',
+	#superclass : 'DebugPointClassTarget',
 	#instVars : [
 		'onRead',
 		'onWrite',
@@ -38,6 +38,15 @@ DebugPointInstanceVariableTarget >> browse [
 DebugPointInstanceVariableTarget >> impactedNodes [
 
 	^ self instanceVariable accessingNodesFor: self accessStrategy
+]
+
+{ #category : 'action' }
+DebugPointInstanceVariableTarget >> install: aLink on: aClassOrObject [
+
+	aClassOrObject
+		link: aLink
+		toSlotNamed: self instanceVariable name
+		option: self accessStrategy
 ]
 
 { #category : 'accessing' }

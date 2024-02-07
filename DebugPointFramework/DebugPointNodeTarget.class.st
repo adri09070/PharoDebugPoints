@@ -1,6 +1,6 @@
 Class {
 	#name : 'DebugPointNodeTarget',
-	#superclass : 'DebugPointTarget',
+	#superclass : 'DebugPointClassTarget',
 	#category : 'DebugPointFramework-Implementations',
 	#package : 'DebugPointFramework',
 	#tag : 'Implementations'
@@ -10,6 +10,12 @@ Class {
 DebugPointNodeTarget >> browse [
 
 	^ self method browse
+]
+
+{ #category : 'action' }
+DebugPointNodeTarget >> install: aLink on: aClassOrObject [
+
+	aClassOrObject link: aLink toAST: self node
 ]
 
 { #category : 'accessing' }

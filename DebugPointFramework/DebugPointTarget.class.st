@@ -15,6 +15,12 @@ DebugPointTarget >> browse [
 	self subclassResponsibility 
 ]
 
+{ #category : 'actions' }
+DebugPointTarget >> install: aLink [
+
+	self subclassResponsibility
+]
+
 { #category : 'accessing' }
 DebugPointTarget >> target [
 
