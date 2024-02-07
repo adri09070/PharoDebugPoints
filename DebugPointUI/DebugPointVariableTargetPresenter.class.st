@@ -47,6 +47,24 @@ DebugPointVariableTargetPresenter >> defaultLayout [
 		  yourself
 ]
 
+{ #category : 'layout' }
+DebugPointVariableTargetPresenter >> dialogLayout [
+
+	^ self newBoxLayoutTopToBottom
+		  add: (self newBoxLayoutLeftToRight
+				   add: readCheckbox expand: false;
+				   add: writeCheckbox expand: false;
+				   add: readWriteCheckbox expand: false;
+				   add: toolbar expand: false;
+				   yourself)
+		  expand: false;
+		  add: (self newPanedLayoutLeftToRight
+				   add: impactedMethodList;
+				   add: codePresenter;
+				   yourself);
+		  yourself
+]
+
 { #category : 'initialization' }
 DebugPointVariableTargetPresenter >> initializeCode [
 

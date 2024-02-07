@@ -38,8 +38,18 @@ DebugPointSelectDialog >> initializePresenters [
 	code := DebugPointCodePresenter new
 		        beForScripting;
 		        editable: false.
+
+	self initializeVariableTargetPresenter.
+
 	list transmitDo: [ :dp |
 		dp ifNotNil: [ dp updateDebugPointUIManager: self ] ]
+]
+
+{ #category : 'initialization' }
+DebugPointSelectDialog >> initializeVariableTargetPresenter [
+
+	variableTargetPresenter := DebugPointVariableTargetPresenter new.
+	variableTargetPresenter layout: variableTargetPresenter dialogLayout
 ]
 
 { #category : 'initialization' }
@@ -74,4 +84,25 @@ DebugPointSelectDialog >> scope: anObject [
 DebugPointSelectDialog >> updateCode: aDebugPointTarget [
 
 	code updateCode: aDebugPointTarget
+]
+
+{ #category : 'update' }
+DebugPointSelectDialog >> updateVariableTargetPresenterFrom: aDebugPointTarget [
+
+	variableTargetPresenter target: aDebugPointTarget
+]
+
+{ #category : 'update' }
+DebugPointSelectDialog >> variableTargetLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  borderWidth: 5;
+		  spacing: 5;
+		  add: label expand: false;
+		  add: (SpPanedLayout newTopToBottom
+				   add: list;
+				   add: variableTargetPresenter;
+				   positionOfSlider: 30 percent;
+				   yourself);
+		  yourself
 ]
