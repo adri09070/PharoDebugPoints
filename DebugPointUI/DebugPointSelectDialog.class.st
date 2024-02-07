@@ -37,7 +37,7 @@ DebugPointSelectDialog >> initializePresenters [
 	code := DebugPointCodePresenter new
 		        beForScripting;
 		        editable: false.
-	list whenSelectionChangedDo: [ :dp |
+	list transmitDo: [ :dp |
 		dp ifNotNil: [ dp updateDebugPointUIManager: self ] ]
 ]
 
