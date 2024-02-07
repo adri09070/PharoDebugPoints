@@ -8,7 +8,8 @@ Class {
 	#instVars : [
 		'code',
 		'scope',
-		'inputFilter'
+		'inputFilter',
+		'variableTargetPresenter'
 	],
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
@@ -72,5 +73,5 @@ DebugPointSelectDialog >> scope: anObject [
 { #category : 'update' }
 DebugPointSelectDialog >> updateCode: aDebugPointTarget [
 
-	code updateCode: list selectedItem
+	code updateCode: aDebugPointTarget
 ]
