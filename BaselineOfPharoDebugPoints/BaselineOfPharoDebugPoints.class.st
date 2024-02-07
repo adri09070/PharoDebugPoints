@@ -23,14 +23,17 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 			with: [ spec requires: #( 'Seaside' ) ].
 		spec
 			package: 'DebugPointCalypso'
-			with: [
-				spec requires:
-					#( 'DebugPointFramework' 'DebugPointUI' 'NewTools' ) ].
+			with: [ spec requires: #( 'DebugPointFramework'
+			   'DebugPointUI' ) ].
 		spec
 			package: 'DebugPointUI'
 			with: [ spec requires: #( 'DebugPointFramework' ) ].
 
 		spec
 			package: 'DebugPointFramework-Tests'
-			with: [ spec requires: #( 'DebugPointFramework' ) ] ]
+			with: [ spec requires: #( 'DebugPointFramework' ) ].
+
+		spec package: 'DebugPointInspector' with: [
+			spec requires: #( 'DebugPointUI' 'DebugPointFramework'
+			   'NewTools' ) ] ]
 ]

@@ -4,8 +4,8 @@ Adds an icon in the inspector where you can set the scope of a debug point to th
 Class {
 	#name : 'StInspectorSetScopeCommand',
 	#superclass : 'StInspectorCommand',
-	#category : 'DebugPointCalypso',
-	#package : 'DebugPointCalypso'
+	#category : 'DebugPointInspector',
+	#package : 'DebugPointInspector'
 }
 
 { #category : 'accessing - defaults' }
