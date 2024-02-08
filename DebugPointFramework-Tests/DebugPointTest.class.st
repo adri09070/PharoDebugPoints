@@ -512,6 +512,28 @@ DebugPointTest >> testTranscriptDebugPoint [
 	self assert: Transcript contents equals: 'string'
 ]
 
+{ #category : 'tests' }
+DebugPointTest >> testTwoDebugPointsOnSameTargetBothActivate [
+
+	| his node2 |
+	"watches the values of argument variable `anId`"
+	node2 := (DummyTestClass methods select: [ :method |
+		          method name = 'DummyTestClass>>#id:' ]) first ast children
+		         second children first children first children first.
+	dp := DebugPointManager installNew: WatchDebugPoint On: node2.
+	dp2 := DebugPointManager installNew: WatchDebugPoint On: node2.
+	his := OrderedCollection new.
+
+	"check empty history"
+	self assertCollection: dp history equals: his.
+	self assertCollection: dp2 history equals: his.
+	"check history after hitting dp"
+	DummyTestClass new id: 2.
+	his add: 2.
+	self assertCollection: dp history equals: his.
+	self assertCollection: dp2 history equals: his
+]
+
 { #category : 'running' }
 DebugPointTest >> testWatchDebugPoint [
 
