@@ -164,13 +164,6 @@ DebugPoint >> metaLink [
 ]
 
 { #category : 'accessing' }
-DebugPoint >> method [
-	"returns the method to which the debug point is attached"
-
-	^ self node methodNode compiledMethod
-]
-
-{ #category : 'accessing' }
 DebugPoint >> name [
 	^name ifNil: [ #Debugpoint ]
 ]

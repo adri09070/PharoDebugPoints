@@ -59,25 +59,23 @@ ChainLinkUI >> expand [
 ]
 
 { #category : 'initialization' }
-ChainLinkUI >> initializePresenters [ 
-	
+ChainLinkUI >> initializePresenters [
+
 	chain := self newTreeTable beResizable.
-	chain 
-			addColumn:
-			((SpStringTableColumn
-				title: 'Type'
-				evaluated: [ :item | item name ])
-				yourself);
-			addColumn:
-			((SpStringTableColumn
-				title: 'Target'
-				evaluated: [ :item | item method printString ])
-				yourself).
-	checkBox  := self newCheckBox label: 'Chain: Each debug point is hit once in sequential order'.
-	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: ChainBehavior new ] ].
-	checkBox whenDeactivatedDo: [ 
-		self debugPoint removeBehavior: ChainBehavior. 
-		self behavior: nil. ].
+	chain
+		addColumn:
+			(SpStringTableColumn title: 'Type' evaluated: [ :item | item name ])
+				yourself;
+		addColumn: (SpStringTableColumn
+				 title: 'Target'
+				 evaluated: [ :item | item targetString ]) yourself.
+	checkBox := self newCheckBox label:
+		            'Chain: Each debug point is hit once in sequential order'.
+	checkBox whenActivatedDo: [
+		self behavior ifNil: [ debugPoint addBehavior: ChainBehavior new ] ].
+	checkBox whenDeactivatedDo: [
+		self debugPoint removeBehavior: ChainBehavior.
+		self behavior: nil ]
 ]
 
 { #category : 'API' }
