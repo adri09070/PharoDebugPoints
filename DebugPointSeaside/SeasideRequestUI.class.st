@@ -7,8 +7,8 @@ Class {
 	#instVars : [
 		'textInput'
 	],
-	#category : 'DebugPointUI',
-	#package : 'DebugPointUI'
+	#category : 'DebugPointSeaside',
+	#package : 'DebugPointSeaside'
 }
 
 { #category : 'layout' }

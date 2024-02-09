@@ -7,9 +7,8 @@ Class {
 	#instVars : [
 		'ip'
 	],
-	#category : 'DebugPointFramework-Behaviors',
-	#package : 'DebugPointFramework',
-	#tag : 'Behaviors'
+	#category : 'DebugPointSeaside',
+	#package : 'DebugPointSeaside'
 }
 
 { #category : 'accessing' }

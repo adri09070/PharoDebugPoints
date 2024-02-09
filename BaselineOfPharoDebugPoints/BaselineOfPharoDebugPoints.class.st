@@ -37,3 +37,19 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 			spec requires: #( 'DebugPointUI' 'DebugPointFramework'
 			   'NewTools' ) ] ]
 ]
+
+{ #category : 'baselines' }
+BaselineOfPharoDebugPoints >> newtools: spec [
+
+	spec
+		baseline: 'NewTools'
+		with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]
+]
+
+{ #category : 'baselines' }
+BaselineOfPharoDebugPoints >> seaside: spec [
+
+	spec
+		baseline: 'Seaside3'
+		with: [ spec repository: 'github://SeasideSt/Seaside:master' ]
+]
