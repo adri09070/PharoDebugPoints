@@ -10,17 +10,10 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [
-		spec
-			baseline: 'NewTools'
-			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ].
+		self newtools: spec.
+		self seaside: spec.
 
-		spec
-			baseline: 'Seaside'
-			with: [ spec repository: 'github://SeasideSt/Seaside:master' ].
-
-		spec
-			package: 'DebugPointFramework'
-			with: [ spec requires: #( 'Seaside' ) ].
+		spec package: 'DebugPointFramework'.
 		spec
 			package: 'DebugPointCalypso'
 			with: [ spec requires: #( 'DebugPointFramework'
@@ -35,7 +28,23 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 
 		spec package: 'DebugPointInspector' with: [
 			spec requires: #( 'DebugPointUI' 'DebugPointFramework'
-			   'NewTools' ) ] ]
+			   'NewTools' ) ].
+		spec
+			package: 'DebugPointSeaside'
+			with: [
+				spec requires:
+					#( 'DebugPointFramework' 'DebugPointUI' 'Seaside3' ) ].
+
+		"Groups"
+		spec
+			group: 'Core' with: #( 'DebugPointFramework' );
+			group: 'Tests' with: #( 'Core' 'DebugPointFramework-Tests' );
+			group: 'UI' with: #( 'Core' 'DebugPointUI' );
+			group: 'Seaside' with: #( 'UI' 'DebugPointSeaside' );
+			group: 'BrowserIntegration' with: #( 'DebugPointCalypso' );
+			group: 'InspectorIntegration' with: #( 'DebugPointInspector' );
+			group: 'default'
+			with: #( 'Tests' 'UI' 'BrowserIntegration' 'InspectorIntegration' ) ]
 ]
 
 { #category : 'baselines' }
