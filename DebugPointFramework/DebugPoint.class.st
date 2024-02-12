@@ -10,7 +10,6 @@ Class {
 		'behaviors',
 		'arguments',
 		'metaLink',
-		'targetInstance',
 		'properties',
 		'target'
 	],
@@ -226,10 +225,10 @@ DebugPoint >> removeFromMethod: aMethod [
 	DebugPointManager notifyDebugPointRemoved: self fromNodes: nodes
 ]
 
-{ #category : 'API' }
+{ #category : 'scope' }
 DebugPoint >> resetObjectScope [
-	self targetInstance: nil.
-	self link condition: nil arguments: nil
+
+	target resetObjectScope
 ]
 
 { #category : 'API' }
@@ -254,11 +253,6 @@ DebugPoint >> target [
 DebugPoint >> targetClass [
 
 	^ self target targetClass
-]
-
-{ #category : 'accessing' }
-DebugPoint >> targetInstance [
-	^targetInstance
 ]
 
 { #category : 'accessing' }

@@ -2,8 +2,6 @@ Class {
 	#name : 'DebugPointInstanceVariableTarget',
 	#superclass : 'DebugPointClassTarget',
 	#instVars : [
-		'onRead',
-		'onWrite',
 		'accessStrategy'
 	],
 	#category : 'DebugPointFramework-Implementations',
@@ -20,8 +18,6 @@ DebugPointInstanceVariableTarget >> accessStrategy [
 { #category : 'accessing' }
 DebugPointInstanceVariableTarget >> accessStrategy: aSymbol [
 
-	onRead := #( #read #all ) includes: aSymbol.
-	onWrite := #( #write #all ) includes: aSymbol.
 	accessStrategy := aSymbol
 ]
 
@@ -77,18 +73,6 @@ DebugPointInstanceVariableTarget >> isReadWrite [
 DebugPointInstanceVariableTarget >> isWriteOnly [
 
 	^ accessStrategy = #write
-]
-
-{ #category : 'accessing' }
-DebugPointInstanceVariableTarget >> onRead [
-
-	^ onRead
-]
-
-{ #category : 'accessing' }
-DebugPointInstanceVariableTarget >> onWrite [
-
-	^ onWrite
 ]
 
 { #category : 'accessing' }
