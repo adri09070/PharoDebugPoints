@@ -12,12 +12,6 @@ Class {
 	#tag : 'Behaviors'
 }
 
-{ #category : 'accessing' }
-ScriptBehavior class >> uiElement [ 
-
-	^ScriptUI
-]
-
 { #category : 'execution' }
 ScriptBehavior >> execute [
 	self script ifNil: [ ^true ].

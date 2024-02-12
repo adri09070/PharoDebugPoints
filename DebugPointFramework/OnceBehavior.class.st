@@ -9,12 +9,6 @@ Class {
 	#tag : 'Behaviors'
 }
 
-{ #category : 'accessing' }
-OnceBehavior class >> uiElement [
-
-	^OnceUI
-]
-
 { #category : 'execution' }
 OnceBehavior >> execute [
 	self debugPoint enabled: false.

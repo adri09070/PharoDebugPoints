@@ -47,12 +47,6 @@ ChainBehavior class >> rootFor: aDebugPoint [
 	^ self rootFor: parent
 ]
 
-{ #category : 'ui building' }
-ChainBehavior class >> uiElement [
-
-	^ ChainLinkUI
-]
-
 { #category : 'private' }
 ChainBehavior >> checkCircularChain: aDebugPoint withParent: aParent [
 	"should return true if there is a circular dependency so that the child will not be added"

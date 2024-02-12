@@ -12,12 +12,6 @@ Class {
 	#tag : 'Behaviors'
 }
 
-{ #category : 'ui building' }
-CountBehavior class >> uiElement [
-
-	^ CountUI 
-]
-
 { #category : 'accessing' }
 CountBehavior >> count [
 	^count ifNil: [ count := 0 ].

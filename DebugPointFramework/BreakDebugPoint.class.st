@@ -28,8 +28,3 @@ BreakDebugPoint >> type [
 
 	^ #Breakpoint
 ]
-
-{ #category : 'accessing' }
-BreakDebugPoint >> uiElement [ 
-	^BreakUI new debugPoint: self.
-]

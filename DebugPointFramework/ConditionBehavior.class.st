@@ -13,12 +13,6 @@ Class {
 }
 
 { #category : 'accessing' }
-ConditionBehavior class >> uiElement [
-
-	^ConditionUI
-]
-
-{ #category : 'accessing' }
 ConditionBehavior >> condition [
 	^condition
 ]

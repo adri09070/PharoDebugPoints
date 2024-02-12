@@ -9,12 +9,6 @@ Class {
 	#tag : 'Behaviors'
 }
 
-{ #category : 'accessing' }
-TestEnvironmentBehavior class >> uiElement [
-
-	^TestEnvironmentUI
-]
-
 { #category : 'execution' }
 TestEnvironmentBehavior >> execute [
 	^(CurrentExecutionEnvironment value isTest).

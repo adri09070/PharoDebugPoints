@@ -12,12 +12,6 @@ Class {
 	#tag : 'Behaviors'
 }
 
-{ #category : 'ui building' }
-TranscriptBehavior class >> uiElement [
-
-	^TranscriptUI
-]
-
 { #category : 'execution' }
 TranscriptBehavior >> execute [
 	Transcript show: self text.
