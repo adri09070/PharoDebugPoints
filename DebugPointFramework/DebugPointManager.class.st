@@ -11,7 +11,7 @@ Class {
 	#tag : 'Base'
 }
 
-{ #category : 'removing' }
+{ #category : 'announcement handling' }
 DebugPointManager class >> handleClassRemoved: anAnnouncement [
 
 	DebugPoint all copy do: [ :debugPoint |
@@ -20,12 +20,12 @@ DebugPointManager class >> handleClassRemoved: anAnnouncement [
 			ifFound: [ debugPoint remove ] ]
 ]
 
-{ #category : 'removing' }
+{ #category : 'announcement handling' }
 DebugPointManager class >> handleMethodModified: anAnnouncement [
 	self removeFromMethod: anAnnouncement oldMethod
 ]
 
-{ #category : 'removing' }
+{ #category : 'announcement handling' }
 DebugPointManager class >> handleMethodRemoved: anAnnouncement [
 	self removeFromMethod: anAnnouncement method
 ]
@@ -354,7 +354,7 @@ DebugPointManager class >> notifyDebugPointRemoved: aDebugPoint fromNodes: nodes
 
 ]
 
-{ #category : 'class initialization' }
+{ #category : 'announcements - registration' }
 DebugPointManager class >> registerInterestToSystemAnnouncement [
 	<systemEventRegistration>
 

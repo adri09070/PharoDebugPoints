@@ -8,7 +8,7 @@ Class {
 	#package : 'DebugPointUI'
 }
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointCodePresenter >> updateCode: aDebugPointNodeTarget [
 	"updates the code window with the code of the selected debug point"
 	aDebugPointNodeTarget ifNil:[self text: ''.^self].

@@ -39,7 +39,7 @@ ClyAddScriptDebugPointCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : 'execution' }
+{ #category : 'ui - dialogs' }
 ClyAddScriptDebugPointCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

@@ -9,7 +9,7 @@ Class {
 	#tag : 'Base'
 }
 
-{ #category : 'api - model' }
+{ #category : 'scope creation' }
 DebugPointTarget >> beForObject: anObject [
 
 	^ DebugPointObjectTarget new
@@ -18,19 +18,19 @@ DebugPointTarget >> beForObject: anObject [
 		  yourself
 ]
 
-{ #category : 'action' }
+{ #category : 'actions' }
 DebugPointTarget >> browse [
 
 	self subclassResponsibility 
 ]
 
-{ #category : 'actions' }
+{ #category : 'installing' }
 DebugPointTarget >> install: aLink [
 
 	self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : 'description' }
 DebugPointTarget >> scope [
 
 	^ self subclassResponsibility

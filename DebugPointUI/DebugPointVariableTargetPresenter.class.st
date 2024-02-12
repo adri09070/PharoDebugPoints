@@ -65,7 +65,7 @@ DebugPointVariableTargetPresenter >> dialogLayout [
 		  yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeCode [
 
 	codePresenter := self newCode
@@ -73,7 +73,7 @@ DebugPointVariableTargetPresenter >> initializeCode [
 		                 yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeMethodList [
 
 	impactedMethodList := self newFilteringList
@@ -93,7 +93,7 @@ DebugPointVariableTargetPresenter >> initializePresenters [
 	self initializeToolbar
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeRadioButtons [
 
 	self initializeReadRadioButton.
@@ -104,7 +104,7 @@ DebugPointVariableTargetPresenter >> initializeRadioButtons [
 			readWriteCheckbox }
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeReadRadioButton [
 
 	readCheckbox := self newRadioButton
@@ -112,7 +112,7 @@ DebugPointVariableTargetPresenter >> initializeReadRadioButton [
 		                yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeReadWriteRadioButton [
 
 	readWriteCheckbox := self newRadioButton
@@ -120,7 +120,7 @@ DebugPointVariableTargetPresenter >> initializeReadWriteRadioButton [
 		                     yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeToolbar [
 
 	toolbar := self newToolbar
@@ -133,7 +133,7 @@ DebugPointVariableTargetPresenter >> initializeToolbar [
 		           yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> initializeWriteRadioButton [
 
 	writeCheckbox := self newRadioButton
@@ -141,7 +141,7 @@ DebugPointVariableTargetPresenter >> initializeWriteRadioButton [
 		                 yourself
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointVariableTargetPresenter >> setupRadioButtonActivationListeners [
 
 	readCheckbox whenActivatedDo: [ self target accessStrategy: #read ].
@@ -163,7 +163,7 @@ DebugPointVariableTargetPresenter >> target: aDebugPointInstanceVariableTarget [
 	self updatePresenter
 ]
 
-{ #category : 'initialization' }
+{ #category : 'updating - presenters' }
 DebugPointVariableTargetPresenter >> updateCodeFromMethod: method [
 
 	codePresenter
@@ -178,13 +178,13 @@ DebugPointVariableTargetPresenter >> updateCodeFromMethod: method [
 					 yourself) ]
 ]
 
-{ #category : 'initialization' }
+{ #category : 'model updates' }
 DebugPointVariableTargetPresenter >> updateImpactedNodesCache [
 
 	impactedNodesCache := self target impactedNodes
 ]
 
-{ #category : 'initialization' }
+{ #category : 'updating - presenters' }
 DebugPointVariableTargetPresenter >> updateMethodList [
 
 	self updateImpactedNodesCache.
@@ -200,7 +200,7 @@ DebugPointVariableTargetPresenter >> updatePresenter [
 	self updateRadioButtonsState
 ]
 
-{ #category : 'initialization' }
+{ #category : 'updating - presenters' }
 DebugPointVariableTargetPresenter >> updateRadioButtonsState [
 
 	readCheckbox state: self target isReadOnly.

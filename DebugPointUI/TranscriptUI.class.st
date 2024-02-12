@@ -11,7 +11,7 @@ Class {
 	#package : 'DebugPointUI'
 }
 
-{ #category : 'private' }
+{ #category : 'action handling' }
 TranscriptUI >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
@@ -20,7 +20,7 @@ TranscriptUI >> activate [
 	self behavior: bh
 ]
 
-{ #category : 'private' }
+{ #category : 'action handling' }
 TranscriptUI >> deactivate [
 	self debugPoint removeBehavior: TranscriptBehavior.
 	self behavior: nil.

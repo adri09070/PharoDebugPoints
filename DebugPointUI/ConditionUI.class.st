@@ -11,7 +11,7 @@ Class {
 	#package : 'DebugPointUI'
 }
 
-{ #category : 'layout' }
+{ #category : 'model updates' }
 ConditionUI >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
@@ -20,7 +20,7 @@ ConditionUI >> activate [
 	self behavior: bh
 ]
 
-{ #category : 'layout' }
+{ #category : 'model updates' }
 ConditionUI >> deactivate [
 	self debugPoint removeBehavior: ConditionBehavior.
 	self behavior: nil.

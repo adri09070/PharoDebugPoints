@@ -11,7 +11,7 @@ Class {
 	#package : 'DebugPointUI'
 }
 
-{ #category : 'private' }
+{ #category : 'action handling' }
 ScriptUI >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
@@ -20,7 +20,7 @@ ScriptUI >> activate [
 	self behavior: bh
 ]
 
-{ #category : 'private' }
+{ #category : 'action handling' }
 ScriptUI >> deactivate [
 	self debugPoint removeBehavior: ScriptBehavior.
 	self behavior: nil.
@@ -52,7 +52,7 @@ ScriptUI >> defaultLayout [
 	
 ]
 
-{ #category : 'layout' }
+{ #category : 'expanding-collapsing' }
 ScriptUI >> expand [
 	^true
 ]

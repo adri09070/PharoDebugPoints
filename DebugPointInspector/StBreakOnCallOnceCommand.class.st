@@ -5,19 +5,19 @@ Class {
 	#package : 'DebugPointInspector'
 }
 
-{ #category : 'initialization' }
+{ #category : 'default' }
 StBreakOnCallOnceCommand class >> defaultDescription [
 
 	^ 'Breaks once when this method is called'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default' }
 StBreakOnCallOnceCommand class >> defaultIconName [
 
 	^ #smallDebug
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default' }
 StBreakOnCallOnceCommand class >> defaultName [ 
 
 	^ 'Break once on call'

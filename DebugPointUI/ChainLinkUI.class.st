@@ -53,7 +53,7 @@ ChainLinkUI >> defaultLayout [
 
 ]
 
-{ #category : 'layout' }
+{ #category : 'expanding-collapsing' }
 ChainLinkUI >> expand [
 	^true
 ]

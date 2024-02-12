@@ -31,7 +31,7 @@ DebugPoint class >> all [
 	^AllDebugPoints ifNil: [ AllDebugPoints := Set new. ]
 ]
 
-{ #category : 'adding' }
+{ #category : 'removing' }
 DebugPoint class >> remove: aDebugPoint [
 
 	self all remove: aDebugPoint ifAbsent: [].
@@ -69,7 +69,7 @@ DebugPoint >> behaviors: aSetOfBehaviors [
 	behaviors := aSetOfBehaviors 
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 DebugPoint >> browse [
 
 	^ self target browse
@@ -123,14 +123,14 @@ DebugPoint >> initialize [
 	self behaviors: (SortedCollection sortUsing: [ :elem1 :elem2 | elem1 priority >= elem2 priority]).
 ]
 
-{ #category : 'actions' }
+{ #category : 'installing' }
 DebugPoint >> install [
 
 	self link uninstall.
 	self target install: self link
 ]
 
-{ #category : 'accessing' }
+{ #category : 'API' }
 DebugPoint >> instanceVariable: aSlot accessStrategy: aSymbol [
 
 	target := DebugPointInstanceVariableTarget new
@@ -153,7 +153,7 @@ DebugPoint >> link: aMetaLink [
 	metaLink := aMetaLink 
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default values' }
 DebugPoint >> metaLink [
 	^(MetaLink new
 		metaObject: self;
@@ -172,7 +172,7 @@ DebugPoint >> name: aSymbol [
 	name := aSymbol
 ]
 
-{ #category : 'accessing' }
+{ #category : 'API' }
 DebugPoint >> node: aNode [
 
 	target := DebugPointNodeTarget new
@@ -237,7 +237,7 @@ DebugPoint >> saveContext: aContext [
 	self arguments at: #context put: aContext
 ]
 
-{ #category : 'accessing' }
+{ #category : 'description' }
 DebugPoint >> scope [
 
 	^ self target scope
@@ -249,13 +249,13 @@ DebugPoint >> target [
 	^ target
 ]
 
-{ #category : 'accessing' }
+{ #category : 'description' }
 DebugPoint >> targetClass [
 
 	^ self target targetClass
 ]
 
-{ #category : 'accessing' }
+{ #category : 'scope' }
 DebugPoint >> targetInstance: anObject [
 
 	target := self target beForObject: anObject

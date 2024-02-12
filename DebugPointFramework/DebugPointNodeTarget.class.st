@@ -6,13 +6,13 @@ Class {
 	#tag : 'Implementations'
 }
 
-{ #category : 'action' }
+{ #category : 'actions' }
 DebugPointNodeTarget >> browse [
 
 	^ self method browse
 ]
 
-{ #category : 'action' }
+{ #category : 'private ' }
 DebugPointNodeTarget >> install: aLink on: aClassOrObject [
 
 	aClassOrObject link: aLink toAST: self node

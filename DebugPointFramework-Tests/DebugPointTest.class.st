@@ -7,8 +7,9 @@ Class {
 		'context',
 		'dp2'
 	],
-	#category : 'DebugPointFramework-Tests',
-	#package : 'DebugPointFramework-Tests'
+	#category : 'DebugPointFramework-Tests-Model',
+	#package : 'DebugPointFramework-Tests',
+	#tag : 'Model'
 }
 
 { #category : 'running' }
@@ -45,7 +46,7 @@ DebugPointTest >> tearDown [
 	super tearDown
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBehaviorPriority [
 	| a b c set |
 	dp := DebugPointManager installNew: DebugPoint On: node.
@@ -63,14 +64,14 @@ DebugPointTest >> testBehaviorPriority [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBreakDebugPoint [
 	dp := DebugPointManager installNew: BreakDebugPoint On: node.
 	self should: [dp hitWithContext: context] raise: Break.
 	self should: [DummyTestClass new id:2 ] raise: Break.
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBreakDebugPointOnVariableAccess [
 
 	dp := DebugPointManager
@@ -82,7 +83,7 @@ DebugPointTest >> testBreakDebugPointOnVariableAccess [
 	self shouldnt: [ DummyTestClass basicNew ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBreakDebugPointOnVariableDetectsNewVariableAccessAfterCompilingNewMethod [
 
 	dp := DebugPointManager
@@ -100,7 +101,7 @@ DebugPointTest >> testBreakDebugPointOnVariableDetectsNewVariableAccessAfterComp
 		ensure: [ DummyTestClass removeSelector: #id2: ]
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBreakDebugPointOnVariableRead [
 
 	dp := DebugPointManager
@@ -111,7 +112,7 @@ DebugPointTest >> testBreakDebugPointOnVariableRead [
 	self shouldnt: [ DummyTestClass new ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testBreakDebugPointOnVariableWrite [
 
 	dp := DebugPointManager
@@ -122,7 +123,7 @@ DebugPointTest >> testBreakDebugPointOnVariableWrite [
 	self shouldnt: [ DummyTestClass basicNew id ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testChainBehaviorHitWithContext [
 
 	dp := DebugPointManager
@@ -152,7 +153,7 @@ DebugPointTest >> testChainBehaviorHitWithContext [
 	self assert: dp2 enabled equals: false
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testChainBehaviorPutChild [
 	dp := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
 	dp2 := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
@@ -170,7 +171,7 @@ DebugPointTest >> testChainBehaviorPutChild [
 	
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testChainBehaviorRemoveBehavior [
 
 	dp := DebugPointManager
@@ -205,7 +206,7 @@ DebugPointTest >> testChainBehaviorRemoveBehavior [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testChainBehaviorResetChain [
 	dp := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
 	dp2 := DebugPointManager installNew: DebugPoint  On: node withBehaviors: {ChainBehavior}.
@@ -226,7 +227,7 @@ DebugPointTest >> testChainBehaviorResetChain [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testConditionBehavior [
 	| behavior |
 	behavior := ConditionBehavior new condition: 'corner=(300@200)'.
@@ -250,7 +251,7 @@ DebugPointTest >> testConditionBehavior [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testConditionBehaviorThisContext [
 	| behavior |
 	
@@ -273,7 +274,7 @@ DebugPointTest >> testConditionBehaviorThisContext [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testCountBehavior [
 	| cbh |
 	
@@ -287,7 +288,7 @@ DebugPointTest >> testCountBehavior [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testObjectCentricBreakDebugPoint [
 
 	| obj obj2 |
@@ -303,7 +304,7 @@ DebugPointTest >> testObjectCentricBreakDebugPoint [
 	self shouldnt: [ obj2 id: 2 ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testObjectCentricBreakDebugPointOnVariableRead [
 
 	| obj obj2 |
@@ -319,7 +320,7 @@ DebugPointTest >> testObjectCentricBreakDebugPointOnVariableRead [
 	self shouldnt: [ obj id: 2 ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testObjectCentricBreakOnceOnVariable [
 
 	| obj |
@@ -335,7 +336,7 @@ DebugPointTest >> testObjectCentricBreakOnceOnVariable [
 	self shouldnt: [ obj id: 3 ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testObjectCentricWatchDebugPoint [
 
 	| his obj |
@@ -375,7 +376,7 @@ DebugPointTest >> testObjectCentricWatchDebugPoint [
 	self assertCollection: dp history equals: his
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testObjectCentricWatchOnceDebugPoint [
 
 	| his obj |
@@ -403,7 +404,7 @@ DebugPointTest >> testObjectCentricWatchOnceDebugPoint [
 	self assertCollection: dp history equals: his
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testOnceBehavior [
 	dp := DebugPointManager installNew: DebugPoint On: node.
 	dp addBehavior: (OnceBehavior new).
@@ -414,7 +415,7 @@ DebugPointTest >> testOnceBehavior [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testOnceBreakBehavior [
 	dp := DebugPointManager installNew: BreakDebugPoint On: node withBehaviors: {OnceBehavior}.
 
@@ -425,7 +426,7 @@ DebugPointTest >> testOnceBreakBehavior [
 
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testOnceBreakOnVariable [
 
 	dp := DebugPointManager
@@ -437,7 +438,7 @@ DebugPointTest >> testOnceBreakOnVariable [
 	self shouldnt: [ DummyTestClass basicNew id: 2 ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testOnceEvaluatesAfterConditionBehavior [
 
 	| conditionBehavior |
@@ -467,7 +468,7 @@ DebugPointTest >> testOnceEvaluatesAfterConditionBehavior [
 	self shouldnt: [ dp hitWithContext: context ] raise: Break
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testScriptDebugPoint [
 
 	"dp := DebugPointManager installNew: TranscriptDebugPoint On: node."
@@ -480,7 +481,7 @@ DebugPointTest >> testScriptDebugPoint [
 	self should: [DummyTestClass new id:2 ] raise: Break.
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testTestEnvironmentBehavior [
 
 	| currentEnvironment |
@@ -501,7 +502,7 @@ DebugPointTest >> testTestEnvironmentBehavior [
 		CurrentExecutionEnvironment value: currentEnvironment ]
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testTranscriptDebugPoint [
 
 	"dp := DebugPointManager installNew: TranscriptDebugPoint On: node."
@@ -534,7 +535,7 @@ DebugPointTest >> testTwoDebugPointsOnSameTargetBothActivate [
 	self assertCollection: dp2 history equals: his
 ]
 
-{ #category : 'running' }
+{ #category : 'tests' }
 DebugPointTest >> testWatchDebugPoint [
 
 	| his node2 |

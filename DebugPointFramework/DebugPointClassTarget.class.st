@@ -6,19 +6,19 @@ Class {
 	#tag : 'Base'
 }
 
-{ #category : 'actions' }
+{ #category : 'installing' }
 DebugPointClassTarget >> install: aLink [
 
 	self install: aLink on: self targetClass
 ]
 
-{ #category : 'actions' }
+{ #category : 'private ' }
 DebugPointClassTarget >> install: aLink on: aClassOrObject [
 
 	self subclassResponsibility
 ]
 
-{ #category : 'accessing' }
+{ #category : 'description' }
 DebugPointClassTarget >> scope [
 
 	^ 'class {1}' format: { self targetClass }

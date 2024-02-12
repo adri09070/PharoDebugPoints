@@ -13,7 +13,7 @@ Class {
 	#package : 'DebugPointUI'
 }
 
-{ #category : 'initialization' }
+{ #category : 'action handling' }
 DebugPointEditor >> changeDebugPointState: newState [
 	self debugPoint enabled: newState.
 	DebugPointManager notifyDebugPointChanged: self debugPoint .
@@ -78,7 +78,7 @@ DebugPointEditor >> initializePresenters [
 		             yourself
 ]
 
-{ #category : 'layout' }
+{ #category : 'presenter building' }
 DebugPointEditor >> newActiveCheckBox [
 	isActiveCheckBox := self newCheckBox label: 'enabled: (de)activates debug point'.
 	isActiveCheckBox state: self debugPoint enabled.
@@ -87,7 +87,7 @@ DebugPointEditor >> newActiveCheckBox [
 	^isActiveCheckBox 
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointEditor >> updateAll [
 
 	self createLayout.

@@ -7,8 +7,9 @@ Class {
 	#instVars : [
 		'textInput'
 	],
-	#category : 'DebugPointSeaside',
-	#package : 'DebugPointSeaside'
+	#category : 'DebugPointSeaside-Presenters',
+	#package : 'DebugPointSeaside',
+	#tag : 'Presenters'
 }
 
 { #category : 'layout' }

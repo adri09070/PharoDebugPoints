@@ -61,7 +61,7 @@ ClyDebugVariableCommand >> execute [
 	variables do: [ :var | self executeFor: var ]
 ]
 
-{ #category : 'execution' }
+{ #category : 'private execution' }
 ClyDebugVariableCommand >> executeFor: aVariable [
 
 	DebugPointManager

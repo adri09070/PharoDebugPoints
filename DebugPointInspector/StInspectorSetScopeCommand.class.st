@@ -8,24 +8,24 @@ Class {
 	#package : 'DebugPointInspector'
 }
 
-{ #category : 'accessing - defaults' }
+{ #category : 'default' }
 StInspectorSetScopeCommand class >> defaultDescription [ 
 	^'Change the scope of a debug point to this object'
 ]
 
-{ #category : 'accessing - defaults' }
+{ #category : 'initialization' }
 StInspectorSetScopeCommand class >> defaultIconName [ 
 	^#smallDebug
 ]
 
-{ #category : 'accessing - defaults' }
+{ #category : 'default' }
 StInspectorSetScopeCommand class >> defaultName [
 	<toolbarInspectCommand: 1>
 	
 	^'Set Scope'
 ]
 
-{ #category : 'accessing - defaults' }
+{ #category : 'documentation' }
 StInspectorSetScopeCommand class >> documentContextRequiredSelectors [ 
 	^super documentContextRequiredSelectors, #(selectedObject)
 ]

@@ -39,7 +39,7 @@ ClyAddConditionBreakCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : 'execution' }
+{ #category : 'ui - dialogs' }
 ClyAddConditionBreakCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

@@ -35,7 +35,7 @@ DebugPointBehaviorUI >> debugPoint: aDebugPoint [
 	debugPoint := aDebugPoint 
 ]
 
-{ #category : 'layout' }
+{ #category : 'expanding-collapsing' }
 DebugPointBehaviorUI >> expand [
 	^false
 ]

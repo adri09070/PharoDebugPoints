@@ -14,7 +14,8 @@ SycOpenDebuggingPointsMenuCommand class >> sourceCodeMenuActivation [
 
 { #category : 'execution' }
 SycOpenDebuggingPointsMenuCommand >> activationStrategy [
-	^SycDebuggingPointsMenuActivation
+
+	^ SycDebuggingPointsMenuActivation
 ]
 
 { #category : 'context menu' }

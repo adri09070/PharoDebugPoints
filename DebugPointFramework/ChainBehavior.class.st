@@ -27,7 +27,7 @@ ChainBehavior class >> parentFor: aDebugPoint [
 	^self allChains keyAtValue: aDebugPoint ifAbsent: [^nil].
 ]
 
-{ #category : 'execution' }
+{ #category : 'removing' }
 ChainBehavior class >> removeChild: aDebugPoint [
 
 	self allChains
@@ -74,7 +74,7 @@ ChainBehavior >> circularChainPopup [
 
 ]
 
-{ #category : 'API' }
+{ #category : 'execution' }
 ChainBehavior >> execute [
 	self child ifNotNil: [:child | child enabled: true].
 	self debugPoint enabled: false.

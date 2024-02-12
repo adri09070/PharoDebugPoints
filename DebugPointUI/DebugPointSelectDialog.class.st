@@ -45,7 +45,7 @@ DebugPointSelectDialog >> initializePresenters [
 		dp ifNotNil: [ dp updateDebugPointUIManager: self ] ]
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointSelectDialog >> initializeVariableTargetPresenter [
 
 	variableTargetPresenter := DebugPointVariableTargetPresenter new.
@@ -80,19 +80,19 @@ DebugPointSelectDialog >> scope: anObject [
 	scope := anObject class
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointSelectDialog >> updateCode: aDebugPointTarget [
 
 	code updateCode: aDebugPointTarget
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointSelectDialog >> updateVariableTargetPresenterFrom: aDebugPointTarget [
 
 	variableTargetPresenter target: aDebugPointTarget
 ]
 
-{ #category : 'update' }
+{ #category : 'layout' }
 DebugPointSelectDialog >> variableTargetLayout [
 
 	^ SpBoxLayout newTopToBottom

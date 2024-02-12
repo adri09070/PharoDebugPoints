@@ -11,7 +11,7 @@ StWatchOnReadCommand class >> defaultDescription [
 	^ 'Saves values read for the selected or any variable'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default' }
 StWatchOnReadCommand class >> defaultIconName [
 
 	^ #smallObjects

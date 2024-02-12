@@ -52,7 +52,7 @@ WatchDebugPoint >> limit: anInteger [
 	].
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default values' }
 WatchDebugPoint >> metaLink [
 	^(MetaLink new 
 				metaObject: self;

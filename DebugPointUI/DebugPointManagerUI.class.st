@@ -115,7 +115,7 @@ DebugPointManagerUI >> initializePresenters [
 	self initializeVariableTargetPresenter
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointManagerUI >> initializeTable [
 
 	dpTable := DebugPointTablePresenter new.
@@ -126,7 +126,7 @@ DebugPointManagerUI >> initializeTable [
 			dp updateDebugPointUIManager: self ] ]
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointManagerUI >> initializeVariableTargetPresenter [
 
 	variableTargetPresenter := DebugPointVariableTargetPresenter new
@@ -136,12 +136,12 @@ DebugPointManagerUI >> initializeVariableTargetPresenter [
 DebugPointManagerUI >> initializeWindow: aWindowPresenter [
 	
 	aWindowPresenter
-		title: 'Debug Point Manager';		
+		title: 'Debug Point Browser';		
 		windowIcon: (self application iconNamed: #glamorousBug);
 		initialExtent: 800@550
 ]
 
-{ #category : 'accessing' }
+{ #category : 'api' }
 DebugPointManagerUI >> items: aDebugPointCollection [
 
 	dpTable items: (aDebugPointCollection select: [ :db |
@@ -153,13 +153,13 @@ DebugPointManagerUI >> select: aDebugPoint [
 	dpTable selectItem: aDebugPoint 
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointManagerUI >> updateCode: aDebugPointTarget [
 
 	dpCode updateCode: aDebugPointTarget
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointManagerUI >> updateEditor [
 	dpTable refresh.
 	dpEditor updateAll .
@@ -167,7 +167,7 @@ DebugPointManagerUI >> updateEditor [
 	
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointManagerUI >> updateTable [
 	| prevSel |
 	prevSel := dpTable selectedItem.
@@ -177,7 +177,7 @@ DebugPointManagerUI >> updateTable [
 	
 ]
 
-{ #category : 'update' }
+{ #category : 'updating - presenters' }
 DebugPointManagerUI >> updateVariableTargetPresenterFrom: aDebugPointTarget [
 
 	variableTargetPresenter target: aDebugPointTarget

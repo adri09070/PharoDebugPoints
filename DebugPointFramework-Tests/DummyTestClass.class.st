@@ -7,8 +7,9 @@ Class {
 	#instVars : [
 		'id'
 	],
-	#category : 'DebugPointFramework-Tests',
-	#package : 'DebugPointFramework-Tests'
+	#category : 'DebugPointFramework-Tests-Utils',
+	#package : 'DebugPointFramework-Tests',
+	#tag : 'Utils'
 }
 
 { #category : 'accessing' }

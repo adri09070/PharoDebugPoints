@@ -8,7 +8,7 @@ Class {
 	#package : 'DebugPointCalypso'
 }
 
-{ #category : 'defaults' }
+{ #category : 'styling' }
 DebugPointIconStyler >> addIconStyle: aNode from: start to: stop color: aColor [
 	"there probably is a better way that just adding a second row but i couldn't figure out rubric"
 	| conf |
@@ -74,7 +74,7 @@ DebugPointIconStyler >> debugPointOn: aNode [
 	^(aNode links detect: [ :link | link metaObject isKindOf: self forClass ]) metaObject.
 ]
 
-{ #category : 'defaults' }
+{ #category : 'styling' }
 DebugPointIconStyler >> disableIcon: anIcon dp: dp [
 
 	dp enabled ifFalse: [
@@ -105,10 +105,11 @@ DebugPointIconStyler >> hasBehaviorIcon: anIcon dp: dp [
 
 { #category : 'defaults' }
 DebugPointIconStyler >> highlightColor [
-	^(Color yellow alpha: 0.3)
+
+	^ Color yellow alpha: 0.3
 ]
 
-{ #category : 'defaults' }
+{ #category : 'accessing' }
 DebugPointIconStyler >> icon: dp [
 	
 	^ dp properties at: #Icon ifAbsent: [ #smallDebug ].

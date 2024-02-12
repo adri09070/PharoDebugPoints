@@ -63,7 +63,7 @@ DebugPointTablePresenter >> initialize [
 	self initializeDebugPointTable 
 ]
 
-{ #category : 'initialization' }
+{ #category : 'presenter building' }
 DebugPointTablePresenter >> initializeDebugPointTable [
 
 	self beResizable.

@@ -38,7 +38,7 @@ ClyAddTranscriptDebugPointCommand >> execute [
 	self putIconInProperties: dp
 ]
 
-{ #category : 'execution' }
+{ #category : 'ui - dialogs' }
 ClyAddTranscriptDebugPointCommand >> popUp [
 	|textInput|
 	textInput := SpRequestDialog new

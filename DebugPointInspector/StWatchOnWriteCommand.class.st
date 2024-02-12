@@ -11,7 +11,7 @@ StWatchOnWriteCommand class >> defaultDescription [
 	^ 'Saves values written for the selected or any variable'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'default' }
 StWatchOnWriteCommand class >> defaultIconName [
 
 	^ #smallObjects

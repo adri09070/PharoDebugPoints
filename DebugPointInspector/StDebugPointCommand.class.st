@@ -12,7 +12,7 @@ StDebugPointCommand >> appliesTo: aTool [
 		do: [ false ]
 ]
 
-{ #category : 'testing' }
+{ #category : 'converting' }
 StDebugPointCommand >> asSpecCommand [
 
 	| command |

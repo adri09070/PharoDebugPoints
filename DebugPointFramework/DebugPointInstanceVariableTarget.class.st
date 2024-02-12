@@ -21,7 +21,7 @@ DebugPointInstanceVariableTarget >> accessStrategy: aSymbol [
 	accessStrategy := aSymbol
 ]
 
-{ #category : 'action' }
+{ #category : 'actions' }
 DebugPointInstanceVariableTarget >> browse [
 
 	Smalltalk tools browser
@@ -36,7 +36,7 @@ DebugPointInstanceVariableTarget >> impactedNodes [
 	^ self instanceVariable accessingNodesFor: self accessStrategy
 ]
 
-{ #category : 'action' }
+{ #category : 'private ' }
 DebugPointInstanceVariableTarget >> install: aLink on: aClassOrObject [
 
 	aClassOrObject
