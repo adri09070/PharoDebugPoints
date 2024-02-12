@@ -91,24 +91,16 @@ DebugPointIconStyler >> forClass [
 	^DebugPoint
 ]
 
-{ #category : 'defaults' }
+{ #category : 'testing' }
 DebugPointIconStyler >> hasBehaviorIcon: anIcon dp: dp [
 
-	(dp behaviors ) ifNotEmpty: [ ^anIcon mergeWith: (((self iconNamed: #smallCogInitialState)scaledToSize: 9@9)darker: 1 ) at: 8@0 ].
-	^anIcon
-	
-	"in case i want seperate things for each behavior:"
-	
-"	|rec|
-	rec := Rectangle origin: 8@0 extent: 8@8.
-	((self debugPointOn: aNode) getBehavior: OnceBehavior ) ifNotNil: [
-		^anIcon mergeWith: ((self iconNamed: #smallCogInitialState)scaledToSize: 9@9 ) at: 8@0
-		^anIcon fill: rec fillColor: (Color r: 0 g: 0.0 b: 1 )
-		]."
-	
-"	((self debugPointOn: aNode) getBehavior: ConditionBehavior) ifNotNil: [
-		^anIcon mergeWith: ((self iconNamed: #class)scaledToSize: 8@8 ) at: 8@8
-		]."
+	dp behaviors ifNotEmpty: [
+		^ anIcon
+			  mergeWith:
+				  (((self iconNamed: #smallCogInitialState) scaledToSize: 9 @ 9)
+					   darker: 1)
+			  at: 8 @ 0 ].
+	^ anIcon
 ]
 
 { #category : 'defaults' }
