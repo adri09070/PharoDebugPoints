@@ -4,7 +4,6 @@ I am a select dialog to display DebugPoints so that the scope of a DebugPoint ca
 Class {
 	#name : 'DebugPointSelectDialogPresenter',
 	#superclass : 'SpSelectDialog',
-	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'code',
 		'scope',
