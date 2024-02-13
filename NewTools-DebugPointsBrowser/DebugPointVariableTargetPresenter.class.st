@@ -1,7 +1,6 @@
 Class {
 	#name : 'DebugPointVariableTargetPresenter',
 	#superclass : 'SpPresenter',
-	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'target',
 		'impactedNodesCache',
