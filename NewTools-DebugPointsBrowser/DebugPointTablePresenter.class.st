@@ -4,7 +4,6 @@ I am a table presenter for debug points with a custom context menu.
 Class {
 	#name : 'DebugPointTablePresenter',
 	#superclass : 'SpTablePresenter',
-	#classTraits : '{} + TraitedClass',
 	#category : 'NewTools-DebugPointsBrowser',
 	#package : 'NewTools-DebugPointsBrowser'
 }
