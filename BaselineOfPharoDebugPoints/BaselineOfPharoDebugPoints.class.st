@@ -16,8 +16,7 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 		spec package: 'DebugPoints'.
 		spec
 			package: 'Calypso-SystemPlugins-DebugPoints-Browser'
-			with: [ spec requires: #( 'DebugPoints'
-			   'NewTools-DebugPointsBrowser' ) ].
+			with: [ spec requires: #( 'DebugPoints' ) ].
 		spec
 			package: 'NewTools-DebugPointsBrowser'
 			with: [ spec requires: #( 'DebugPoints' ) ].

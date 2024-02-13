@@ -8,6 +8,12 @@ Class {
 	#package : 'Calypso-SystemPlugins-DebugPoints-Browser'
 }
 
+{ #category : 'testing' }
+DebugPointIconStyler class >> isStaticStyler [
+
+	^ true
+]
+
 { #category : 'styling' }
 DebugPointIconStyler >> addIconStyle: aNode from: start to: stop color: aColor [
 	"there probably is a better way that just adding a second row but i couldn't figure out rubric"
@@ -113,13 +119,6 @@ DebugPointIconStyler >> highlightColor [
 DebugPointIconStyler >> icon: dp [
 	
 	^ dp properties at: #Icon ifAbsent: [ #smallDebug ].
-]
-
-{ #category : 'defaults' }
-DebugPointIconStyler >> iconBlock: dp [
-
-	^[ :seg | DebugPointBrowserPresenter new open; select: dp. ]
-
 ]
 
 { #category : 'defaults' }
