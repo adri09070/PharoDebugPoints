@@ -13,36 +13,36 @@ BaselineOfPharoDebugPoints >> baseline: spec [
 		self newtools: spec.
 		self seaside: spec.
 
-		spec package: 'DebugPointFramework'.
+		spec package: 'DebugPoints'.
 		spec
-			package: 'DebugPointCalypso'
-			with: [ spec requires: #( 'DebugPointFramework'
-			   'DebugPointUI' ) ].
+			package: 'Calypso-SystemPlugins-DebugPoints-Browser'
+			with: [ spec requires: #( 'DebugPoints'
+			   'NewTools-DebugPointsBrowser' ) ].
 		spec
-			package: 'DebugPointUI'
-			with: [ spec requires: #( 'DebugPointFramework' ) ].
+			package: 'NewTools-DebugPointsBrowser'
+			with: [ spec requires: #( 'DebugPoints' ) ].
 
 		spec
-			package: 'DebugPointFramework-Tests'
-			with: [ spec requires: #( 'DebugPointFramework' ) ].
+			package: 'DebugPoints-Tests'
+			with: [ spec requires: #( 'DebugPoints' ) ].
 
-		spec package: 'DebugPointInspector' with: [
-			spec requires: #( 'DebugPointUI' 'DebugPointFramework'
+		spec package: 'NewTools-ObjectCentricDebugPoints' with: [
+			spec requires: #( 'NewTools-DebugPointsBrowser' 'DebugPoints'
 			   'NewTools' ) ].
 		spec
-			package: 'DebugPointSeaside'
+			package: 'Seaside-DebugPoints'
 			with: [
 				spec requires:
-					#( 'DebugPointFramework' 'DebugPointUI' 'Seaside3' ) ].
+					#( 'DebugPoints' 'NewTools-DebugPointsBrowser' 'Seaside3' ) ].
 
 		"Groups"
 		spec
-			group: 'Core' with: #( 'DebugPointFramework' );
-			group: 'Tests' with: #( 'Core' 'DebugPointFramework-Tests' );
-			group: 'UI' with: #( 'Core' 'DebugPointUI' );
-			group: 'Seaside' with: #( 'UI' 'DebugPointSeaside' );
-			group: 'BrowserIntegration' with: #( 'DebugPointCalypso' );
-			group: 'InspectorIntegration' with: #( 'DebugPointInspector' );
+			group: 'Core' with: #( 'DebugPoints' );
+			group: 'Tests' with: #( 'Core' 'DebugPoints-Tests' );
+			group: 'UI' with: #( 'Core' 'NewTools-DebugPointsBrowser' );
+			group: 'Seaside' with: #( 'UI' 'Seaside-DebugPoints' );
+			group: 'BrowserIntegration' with: #( 'Calypso-SystemPlugins-DebugPoints-Browser' );
+			group: 'InspectorIntegration' with: #( 'NewTools-ObjectCentricDebugPoints' );
 			group: 'default'
 			with: #( 'Tests' 'UI' 'BrowserIntegration' 'InspectorIntegration' ) ]
 ]
