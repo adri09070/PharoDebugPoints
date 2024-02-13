@@ -4,7 +4,6 @@ I am the UI for the complete DebugPoint Manager.
 Class {
 	#name : 'DebugPointBrowserPresenter',
 	#superclass : 'SpPresenter',
-	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'dpTable',
 		'dpEditor',
