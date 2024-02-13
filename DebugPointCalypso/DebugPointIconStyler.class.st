@@ -118,7 +118,7 @@ DebugPointIconStyler >> icon: dp [
 { #category : 'defaults' }
 DebugPointIconStyler >> iconBlock: dp [
 
-	^[ :seg | DebugPointManagerUI new open; select: dp. ]
+	^[ :seg | DebugPointBrowserPresenter new open; select: dp. ]
 
 ]
 

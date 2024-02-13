@@ -2,7 +2,7 @@
 I create a horizontal list of UI elements, based on the behaviors and class of a DebugPoint.
 "
 Class {
-	#name : 'DebugPointEditor',
+	#name : 'DebugPointEditorPresenter',
 	#superclass : 'SpPresenter',
 	#instVars : [
 		'debugPoint',
@@ -14,13 +14,13 @@ Class {
 }
 
 { #category : 'action handling' }
-DebugPointEditor >> changeDebugPointState: newState [
+DebugPointEditorPresenter >> changeDebugPointState: newState [
 	self debugPoint enabled: newState.
 	DebugPointManager notifyDebugPointChanged: self debugPoint .
 ]
 
 { #category : 'layout' }
-DebugPointEditor >> createLayout [
+DebugPointEditorPresenter >> createLayout [
 
 	self debugPoint ifNil: [ ^self layout: self defaultLayout ].
 	self layout: SpBoxLayout newTopToBottom.
@@ -37,7 +37,7 @@ DebugPointEditor >> createLayout [
 ]
 
 { #category : 'accessing' }
-DebugPointEditor >> debugPoint [
+DebugPointEditorPresenter >> debugPoint [
 	^debugPoint
 	
 
@@ -45,7 +45,7 @@ DebugPointEditor >> debugPoint [
 ]
 
 { #category : 'accessing' }
-DebugPointEditor >> debugPoint: aDebugPoint [
+DebugPointEditorPresenter >> debugPoint: aDebugPoint [
 	debugPoint := aDebugPoint .
 	
 	self updateAll.
@@ -53,14 +53,14 @@ DebugPointEditor >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-DebugPointEditor >> defaultLayout [ 
+DebugPointEditorPresenter >> defaultLayout [ 
 	^SpBoxLayout new hAlignCenter; vAlignCenter;
 	add: (SpLabelPresenter new label: 'Select a Debug Point');
 	yourself.
 ]
 
 { #category : 'initialization' }
-DebugPointEditor >> initializePresenters [
+DebugPointEditorPresenter >> initializePresenters [
 
 	actionBar := self newToolbar
 		             add: (self newToolbarButton
@@ -79,7 +79,7 @@ DebugPointEditor >> initializePresenters [
 ]
 
 { #category : 'presenter building' }
-DebugPointEditor >> newActiveCheckBox [
+DebugPointEditorPresenter >> newActiveCheckBox [
 	isActiveCheckBox := self newCheckBox label: 'enabled: (de)activates debug point'.
 	isActiveCheckBox state: self debugPoint enabled.
 	isActiveCheckBox whenActivatedDo: [ self changeDebugPointState: true ].
@@ -88,7 +88,7 @@ DebugPointEditor >> newActiveCheckBox [
 ]
 
 { #category : 'updating - presenters' }
-DebugPointEditor >> updateAll [
+DebugPointEditorPresenter >> updateAll [
 
 	self createLayout.
 	"self layout children do: [ :c | c update]"

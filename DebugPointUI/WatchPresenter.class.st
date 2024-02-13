@@ -2,8 +2,8 @@
 I a the UI element for a watchpoint.
 "
 Class {
-	#name : 'WatchUI',
-	#superclass : 'DebugPointUI',
+	#name : 'WatchPresenter',
+	#superclass : 'DebugPointPresenter',
 	#instVars : [
 		'historyList',
 		'textInput'
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'accessing' }
-WatchUI >> debugPoint: aDebugPoint [
+WatchPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	
 	textInput number: (self debugPoint limit ifNil:[''] ifNotNil: [:s|s]).
@@ -21,7 +21,7 @@ WatchUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-WatchUI >> defaultLayout [ 
+WatchPresenter >> defaultLayout [ 
 	
 	^SpBoxLayout newTopToBottom 
 		add: (self newLabel label: 'Watch') expand: false ;
@@ -39,7 +39,7 @@ WatchUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-WatchUI >> initializePresenters [ 
+WatchPresenter >> initializePresenters [ 
 	
 	historyList := self newList 
 		activateOnDoubleClick;

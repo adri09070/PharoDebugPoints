@@ -30,11 +30,11 @@ StInspectorSetScopeCommand class >> documentContextRequiredSelectors [
 	^super documentContextRequiredSelectors, #(selectedObject)
 ]
 
-{ #category : 'execution' }
+{ #category : 'executing' }
 StInspectorSetScopeCommand >> execute [
 
 	| debugPoint |
-	debugPoint := DebugPointSelectDialog new
+	debugPoint := DebugPointSelectDialogPresenter new
 		              scope: self interestingObject;
 		              items: DebugPoint all asOrderedCollection;
 		              label:

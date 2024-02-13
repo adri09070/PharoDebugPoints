@@ -2,8 +2,8 @@
 I am the UI element for the ChainLinkBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'ChainLinkUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'ChainLinkPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'chain'
 	],
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : 'accessing' }
-ChainLinkUI >> debugPoint: aDebugPoint [
+ChainLinkPresenter >> debugPoint: aDebugPoint [
 
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: ChainBehavior.
@@ -30,7 +30,7 @@ ChainLinkUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-ChainLinkUI >> defaultLayout [ 
+ChainLinkPresenter >> defaultLayout [ 
 	| newLayout |
 	
 	newLayout := SpBoxLayout newTopToBottom 
@@ -54,12 +54,12 @@ ChainLinkUI >> defaultLayout [
 ]
 
 { #category : 'expanding-collapsing' }
-ChainLinkUI >> expand [
+ChainLinkPresenter >> expand [
 	^true
 ]
 
 { #category : 'initialization' }
-ChainLinkUI >> initializePresenters [
+ChainLinkPresenter >> initializePresenters [
 
 	chain := self newTreeTable beResizable.
 	chain
@@ -79,7 +79,7 @@ ChainLinkUI >> initializePresenters [
 ]
 
 { #category : 'API' }
-ChainLinkUI >> resetChain [
+ChainLinkPresenter >> resetChain [
 
 	self behavior resetChain.
 ]

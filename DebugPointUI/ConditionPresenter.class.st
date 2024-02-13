@@ -2,8 +2,8 @@
 I am the UI element for the ConditionBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'ConditionUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'ConditionPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'codeInput'
 	],
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : 'model updates' }
-ConditionUI >> activate [
+ConditionPresenter >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
 	bh := (ConditionBehavior new condition: (self debugPoint properties at: #Condition ifAbsent: '')).
@@ -21,13 +21,13 @@ ConditionUI >> activate [
 ]
 
 { #category : 'model updates' }
-ConditionUI >> deactivate [
+ConditionPresenter >> deactivate [
 	self debugPoint removeBehavior: ConditionBehavior.
 	self behavior: nil.
 ]
 
 { #category : 'accessing' }
-ConditionUI >> debugPoint: aDebugPoint [
+ConditionPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	
 	behavior := self debugPoint getBehavior: ConditionBehavior.
@@ -38,7 +38,7 @@ ConditionUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-ConditionUI >> defaultLayout [ 
+ConditionPresenter >> defaultLayout [ 
 	| newLayout |
 	
 	newLayout := SpBoxLayout newTopToBottom
@@ -56,7 +56,7 @@ ConditionUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-ConditionUI >> initializePresenters [ 
+ConditionPresenter >> initializePresenters [ 
 	
 	codeInput  := self newCode.
 	codeInput beForScripting.

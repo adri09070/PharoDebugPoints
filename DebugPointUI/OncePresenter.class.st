@@ -2,14 +2,14 @@
 I am the UI element for the OnceBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'OnceUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'OncePresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
 }
 
 { #category : 'accessing' }
-OnceUI >> debugPoint: aDebugPoint [
+OncePresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: OnceBehavior.
 	checkBox state: (self debugPoint getBehavior: OnceBehavior) isNotNil.
@@ -17,7 +17,7 @@ OnceUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-OnceUI >> defaultLayout [ 
+OncePresenter >> defaultLayout [ 
 	
 	^SpBoxLayout newTopToBottom
 		add: checkBox expand: false;
@@ -25,7 +25,7 @@ OnceUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-OnceUI >> initializePresenters [ 
+OncePresenter >> initializePresenters [ 
 	
 	checkBox  := self newCheckBox label: 'Once: Deactivates debug point after one hit'.
 	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: OnceBehavior new ] ].

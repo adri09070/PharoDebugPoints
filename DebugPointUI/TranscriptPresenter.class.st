@@ -2,8 +2,8 @@
 I am the UI element for the TranscriptBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'TranscriptUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'TranscriptPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'textInput'
 	],
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : 'action handling' }
-TranscriptUI >> activate [
+TranscriptPresenter >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
 	bh := (TranscriptBehavior new text: (self debugPoint properties at: #TranscriptText ifAbsent: '')).
@@ -21,13 +21,13 @@ TranscriptUI >> activate [
 ]
 
 { #category : 'action handling' }
-TranscriptUI >> deactivate [
+TranscriptPresenter >> deactivate [
 	self debugPoint removeBehavior: TranscriptBehavior.
 	self behavior: nil.
 ]
 
 { #category : 'accessing' }
-TranscriptUI >> debugPoint: aDebugPoint [
+TranscriptPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	
 	behavior := self debugPoint getBehavior: TranscriptBehavior.
@@ -38,7 +38,7 @@ TranscriptUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-TranscriptUI >> defaultLayout [ 
+TranscriptPresenter >> defaultLayout [ 
 	| newLayout |
 	
 	newLayout := SpBoxLayout newTopToBottom
@@ -56,7 +56,7 @@ TranscriptUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-TranscriptUI >> initializePresenters [ 
+TranscriptPresenter >> initializePresenters [ 
 	
 	textInput  := self newText.
 	textInput whenTextChangedDo: [ self behavior ifNotNil: [behavior text: textInput text ]].

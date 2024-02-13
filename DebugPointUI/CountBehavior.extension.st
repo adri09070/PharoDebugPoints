@@ -3,5 +3,5 @@ Extension { #name : 'CountBehavior' }
 { #category : '*DebugPointUI' }
 CountBehavior class >> uiElement [
 
-	^ CountUI 
+	^ CountPresenter 
 ]

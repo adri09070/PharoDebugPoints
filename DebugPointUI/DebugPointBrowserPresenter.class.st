@@ -2,7 +2,7 @@
 I am the UI for the complete DebugPoint Manager.
 "
 Class {
-	#name : 'DebugPointManagerUI',
+	#name : 'DebugPointBrowserPresenter',
 	#superclass : 'SpPresenter',
 	#classTraits : '{} + TraitedClass',
 	#instVars : [
@@ -18,7 +18,7 @@ Class {
 }
 
 { #category : 'world menu' }
-DebugPointManagerUI class >> menuCommandOn: aBuilder [
+DebugPointBrowserPresenter class >> menuCommandOn: aBuilder [
 	<worldMenu>
 	(aBuilder item: #'Debug Point Manager')
 		parent: #Debug;
@@ -30,14 +30,14 @@ DebugPointManagerUI class >> menuCommandOn: aBuilder [
 ]
 
 { #category : 'action handling' }
-DebugPointManagerUI >> activateAllDebugPoints [
+DebugPointBrowserPresenter >> activateAllDebugPoints [
 
 	dpTable items do: [ :debugPoint |
 		self activateDebugPoint: debugPoint ]
 ]
 
 { #category : 'action handling' }
-DebugPointManagerUI >> activateDebugPoint: debugPoint [
+DebugPointBrowserPresenter >> activateDebugPoint: debugPoint [
 
 	(debugPoint getBehavior: ChainBehavior)
 		ifNil: [ debugPoint enabled: true ]
@@ -45,7 +45,7 @@ DebugPointManagerUI >> activateDebugPoint: debugPoint [
 ]
 
 { #category : 'initialization' }
-DebugPointManagerUI >> connectPresenters [
+DebugPointBrowserPresenter >> connectPresenters [
 
 	inputFilter whenSubmitDo: [ :text |
 		self items: DebugPoint all asOrderedCollection ].
@@ -55,20 +55,20 @@ DebugPointManagerUI >> connectPresenters [
 ]
 
 { #category : 'action handling' }
-DebugPointManagerUI >> deactivateAllDebugPoints [
+DebugPointBrowserPresenter >> deactivateAllDebugPoints [
 
 	dpTable items do: [ :debugPoint |
 		self deactivateDebugPoint: debugPoint ]
 ]
 
 { #category : 'action handling' }
-DebugPointManagerUI >> deactivateDebugPoint: debugPoint [
+DebugPointBrowserPresenter >> deactivateDebugPoint: debugPoint [
 
 	debugPoint enabled: false
 ]
 
 { #category : 'layout' }
-DebugPointManagerUI >> defaultLayout [
+DebugPointBrowserPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight
@@ -89,7 +89,7 @@ DebugPointManagerUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-DebugPointManagerUI >> initialize [ 
+DebugPointBrowserPresenter >> initialize [ 
 
 	super initialize.
 	SystemAnnouncer uniqueInstance weak when: DebugPointAdded send: #updateTable to: self.
@@ -100,10 +100,10 @@ DebugPointManagerUI >> initialize [
 ]
 
 { #category : 'initialization' }
-DebugPointManagerUI >> initializePresenters [
+DebugPointBrowserPresenter >> initializePresenters [
 
 	self initializeTable.
-	dpEditor := DebugPointEditor new.
+	dpEditor := DebugPointEditorPresenter new.
 	dpCode := DebugPointCodePresenter new editable: false.
 
 	inputFilter := self newSearchInput
@@ -116,7 +116,7 @@ DebugPointManagerUI >> initializePresenters [
 ]
 
 { #category : 'presenter building' }
-DebugPointManagerUI >> initializeTable [
+DebugPointBrowserPresenter >> initializeTable [
 
 	dpTable := DebugPointTablePresenter new.
 
@@ -127,13 +127,13 @@ DebugPointManagerUI >> initializeTable [
 ]
 
 { #category : 'presenter building' }
-DebugPointManagerUI >> initializeVariableTargetPresenter [
+DebugPointBrowserPresenter >> initializeVariableTargetPresenter [
 
 	variableTargetPresenter := DebugPointVariableTargetPresenter new
 ]
 
 { #category : 'initialization' }
-DebugPointManagerUI >> initializeWindow: aWindowPresenter [
+DebugPointBrowserPresenter >> initializeWindow: aWindowPresenter [
 	
 	aWindowPresenter
 		title: 'Debug Point Browser';		
@@ -142,25 +142,25 @@ DebugPointManagerUI >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'api' }
-DebugPointManagerUI >> items: aDebugPointCollection [
+DebugPointBrowserPresenter >> items: aDebugPointCollection [
 
 	dpTable items: (aDebugPointCollection select: [ :db |
 			 db name beginsWith: inputFilter text ])
 ]
 
 { #category : 'enumerating' }
-DebugPointManagerUI >> select: aDebugPoint [
+DebugPointBrowserPresenter >> select: aDebugPoint [
 	dpTable selectItem: aDebugPoint 
 ]
 
 { #category : 'updating - presenters' }
-DebugPointManagerUI >> updateCode: aDebugPointTarget [
+DebugPointBrowserPresenter >> updateCode: aDebugPointTarget [
 
 	dpCode updateCode: aDebugPointTarget
 ]
 
 { #category : 'updating - presenters' }
-DebugPointManagerUI >> updateEditor [
+DebugPointBrowserPresenter >> updateEditor [
 	dpTable refresh.
 	dpEditor updateAll .
 
@@ -168,7 +168,7 @@ DebugPointManagerUI >> updateEditor [
 ]
 
 { #category : 'updating - presenters' }
-DebugPointManagerUI >> updateTable [
+DebugPointBrowserPresenter >> updateTable [
 	| prevSel |
 	prevSel := dpTable selectedItem.
 	dpTable items: DebugPoint all asOrderedCollection .
@@ -178,13 +178,13 @@ DebugPointManagerUI >> updateTable [
 ]
 
 { #category : 'updating - presenters' }
-DebugPointManagerUI >> updateVariableTargetPresenterFrom: aDebugPointTarget [
+DebugPointBrowserPresenter >> updateVariableTargetPresenterFrom: aDebugPointTarget [
 
 	variableTargetPresenter target: aDebugPointTarget
 ]
 
 { #category : 'layout' }
-DebugPointManagerUI >> variableTargetLayout [
+DebugPointBrowserPresenter >> variableTargetLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: (SpBoxLayout newLeftToRight

@@ -3,7 +3,7 @@ I am the UI element for the SeasideRequestBehavior of DebugPoints and am added t
 "
 Class {
 	#name : 'SeasideRequestUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'textInput'
 	],

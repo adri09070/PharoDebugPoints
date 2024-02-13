@@ -2,13 +2,12 @@
 I am a select dialog to display DebugPoints so that the scope of a DebugPoint can be set to a specific object.
 "
 Class {
-	#name : 'DebugPointSelectDialog',
+	#name : 'DebugPointSelectDialogPresenter',
 	#superclass : 'SpSelectDialog',
 	#classTraits : '{} + TraitedClass',
 	#instVars : [
 		'code',
 		'scope',
-		'inputFilter',
 		'variableTargetPresenter'
 	],
 	#category : 'DebugPointUI',
@@ -16,7 +15,7 @@ Class {
 }
 
 { #category : 'layout' }
-DebugPointSelectDialog >> defaultLayout [
+DebugPointSelectDialogPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  borderWidth: 5;
@@ -30,7 +29,7 @@ DebugPointSelectDialog >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-DebugPointSelectDialog >> initializePresenters [
+DebugPointSelectDialogPresenter >> initializePresenters [
 
 	label := self newLabel.
 
@@ -46,14 +45,14 @@ DebugPointSelectDialog >> initializePresenters [
 ]
 
 { #category : 'presenter building' }
-DebugPointSelectDialog >> initializeVariableTargetPresenter [
+DebugPointSelectDialogPresenter >> initializeVariableTargetPresenter [
 
 	variableTargetPresenter := DebugPointVariableTargetPresenter new.
 	variableTargetPresenter layout: variableTargetPresenter dialogLayout
 ]
 
 { #category : 'initialization' }
-DebugPointSelectDialog >> initializeWindow: aWindowPresenter [ 
+DebugPointSelectDialogPresenter >> initializeWindow: aWindowPresenter [ 
 	
 	aWindowPresenter
 		title: 'Debug Points';		
@@ -63,37 +62,37 @@ DebugPointSelectDialog >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : 'api' }
-DebugPointSelectDialog >> items: items [
+DebugPointSelectDialogPresenter >> items: items [
 	"filter debug points such that only those that are attached to the class of the inspected object are displayed"
 
 	list items: (items select: [ :db | db targetClass = self scope ])
 ]
 
 { #category : 'accessing' }
-DebugPointSelectDialog >> scope [  
+DebugPointSelectDialogPresenter >> scope [  
 	^scope
 ]
 
 { #category : 'accessing' }
-DebugPointSelectDialog >> scope: anObject [ 
+DebugPointSelectDialogPresenter >> scope: anObject [ 
 "see items: method"
 	scope := anObject class
 ]
 
 { #category : 'updating - presenters' }
-DebugPointSelectDialog >> updateCode: aDebugPointTarget [
+DebugPointSelectDialogPresenter >> updateCode: aDebugPointTarget [
 
 	code updateCode: aDebugPointTarget
 ]
 
 { #category : 'updating - presenters' }
-DebugPointSelectDialog >> updateVariableTargetPresenterFrom: aDebugPointTarget [
+DebugPointSelectDialogPresenter >> updateVariableTargetPresenterFrom: aDebugPointTarget [
 
 	variableTargetPresenter target: aDebugPointTarget
 ]
 
 { #category : 'layout' }
-DebugPointSelectDialog >> variableTargetLayout [
+DebugPointSelectDialogPresenter >> variableTargetLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  borderWidth: 5;

@@ -4,7 +4,7 @@ I am the superclass of UI elements of debug point behaviors.
 By setting the expand property a subclass can decide if the element should be expanding automatically when it is used in the DebugPointEditor.
 "
 Class {
-	#name : 'DebugPointBehaviorUI',
+	#name : 'DebugPointBehaviorPresenter',
 	#superclass : 'SpPresenter',
 	#instVars : [
 		'behavior',
@@ -16,26 +16,26 @@ Class {
 }
 
 { #category : 'accessing' }
-DebugPointBehaviorUI >> behavior [
+DebugPointBehaviorPresenter >> behavior [
 	^behavior
 ]
 
 { #category : 'accessing' }
-DebugPointBehaviorUI >> behavior: aBehavior [
+DebugPointBehaviorPresenter >> behavior: aBehavior [
 	behavior := aBehavior 
 ]
 
 { #category : 'accessing' }
-DebugPointBehaviorUI >> debugPoint [ 
+DebugPointBehaviorPresenter >> debugPoint [ 
 	^debugPoint 
 ]
 
 { #category : 'accessing' }
-DebugPointBehaviorUI >> debugPoint: aDebugPoint [
+DebugPointBehaviorPresenter >> debugPoint: aDebugPoint [
 	debugPoint := aDebugPoint 
 ]
 
 { #category : 'expanding-collapsing' }
-DebugPointBehaviorUI >> expand [
+DebugPointBehaviorPresenter >> expand [
 	^false
 ]

@@ -2,14 +2,14 @@
 I am the UI element for the TestEnvironmentBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'TestEnvironmentUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'TestEnvironmentPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#category : 'DebugPointUI',
 	#package : 'DebugPointUI'
 }
 
 { #category : 'accessing' }
-TestEnvironmentUI >> debugPoint: aDebugPoint [
+TestEnvironmentPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: TestEnvironmentBehavior .
 	checkBox state: (self debugPoint getBehavior: TestEnvironmentBehavior) isNotNil.
@@ -17,7 +17,7 @@ TestEnvironmentUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-TestEnvironmentUI >> defaultLayout [ 
+TestEnvironmentPresenter >> defaultLayout [ 
 	
 	^SpBoxLayout newTopToBottom
 		add: checkBox expand: false;
@@ -25,7 +25,7 @@ TestEnvironmentUI >> defaultLayout [
 ]
 
 { #category : 'initialization' }
-TestEnvironmentUI >> initializePresenters [ 
+TestEnvironmentPresenter >> initializePresenters [ 
 	
 	checkBox  := self newCheckBox label: 'Test Environment Only: Hits only when executing tests'.
 	checkBox whenActivatedDo: [ self behavior ifNil: [ debugPoint addBehavior: TestEnvironmentBehavior new ] ].

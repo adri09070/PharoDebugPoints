@@ -2,8 +2,8 @@
 I am the UI element for the CountBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'CountUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'CountPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'textInput'
 	],
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : 'accessing' }
-CountUI >> debugPoint: aDebugPoint [
+CountPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: CountBehavior.
 	checkBox state: (self debugPoint getBehavior: CountBehavior) isNotNil.
@@ -21,7 +21,7 @@ CountUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-CountUI >> defaultLayout [ 
+CountPresenter >> defaultLayout [ 
 	| newLayout |
 	newLayout := SpBoxLayout newTopToBottom 
 		add: checkBox expand: false;
@@ -36,7 +36,7 @@ CountUI >> defaultLayout [
 ]
 
 { #category : 'layout' }
-CountUI >> expandedLayout [
+CountPresenter >> expandedLayout [
 	^( SpBoxLayout newLeftToRight borderWidth: 5;
 			add: (self newLabel label: 'Current Count:') expand: false ;
 			add: textInput  expand: true ;
@@ -44,7 +44,7 @@ CountUI >> expandedLayout [
 ]
 
 { #category : 'initialization' }
-CountUI >> initializePresenters [ 
+CountPresenter >> initializePresenters [ 
 	
 	textInput := self newTextInput beNotEditable .
 	

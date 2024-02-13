@@ -2,7 +2,7 @@
 I am the superclass for UI elements for subclasses of DebugPoint.
 "
 Class {
-	#name : 'DebugPointUI',
+	#name : 'DebugPointPresenter',
 	#superclass : 'SpPresenter',
 	#instVars : [
 		'debugPoint'
@@ -12,11 +12,11 @@ Class {
 }
 
 { #category : 'accessing' }
-DebugPointUI >> debugPoint [ 
+DebugPointPresenter >> debugPoint [ 
 	^debugPoint 
 ]
 
 { #category : 'accessing' }
-DebugPointUI >> debugPoint: aDebugPoint [
+DebugPointPresenter >> debugPoint: aDebugPoint [
 	debugPoint := aDebugPoint 
 ]

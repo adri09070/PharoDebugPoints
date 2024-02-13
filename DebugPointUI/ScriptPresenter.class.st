@@ -2,8 +2,8 @@
 I am the UI element for the ScriptBehavior of DebugPoints and am added to the DebugPointEditor.
 "
 Class {
-	#name : 'ScriptUI',
-	#superclass : 'DebugPointBehaviorUI',
+	#name : 'ScriptPresenter',
+	#superclass : 'DebugPointBehaviorPresenter',
 	#instVars : [
 		'codeInput'
 	],
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : 'action handling' }
-ScriptUI >> activate [
+ScriptPresenter >> activate [
 	| bh |
 	self behavior ifNotNil: [ ^self ].
 	bh := (ScriptBehavior new script: (self debugPoint properties at: #Script ifAbsent: '')).
@@ -21,13 +21,13 @@ ScriptUI >> activate [
 ]
 
 { #category : 'action handling' }
-ScriptUI >> deactivate [
+ScriptPresenter >> deactivate [
 	self debugPoint removeBehavior: ScriptBehavior.
 	self behavior: nil.
 ]
 
 { #category : 'accessing' }
-ScriptUI >> debugPoint: aDebugPoint [
+ScriptPresenter >> debugPoint: aDebugPoint [
 	super debugPoint: aDebugPoint.
 	behavior := self debugPoint getBehavior: ScriptBehavior.
 	checkBox state: self behavior isNotNil.
@@ -36,7 +36,7 @@ ScriptUI >> debugPoint: aDebugPoint [
 ]
 
 { #category : 'layout' }
-ScriptUI >> defaultLayout [ 
+ScriptPresenter >> defaultLayout [ 
 	| newLayout |
 	newLayout := SpBoxLayout newTopToBottom 
 		add: checkBox expand: false;
@@ -53,12 +53,12 @@ ScriptUI >> defaultLayout [
 ]
 
 { #category : 'expanding-collapsing' }
-ScriptUI >> expand [
+ScriptPresenter >> expand [
 	^true
 ]
 
 { #category : 'initialization' }
-ScriptUI >> initializePresenters [ 
+ScriptPresenter >> initializePresenters [ 
 	
 	checkBox  := self newCheckBox label: 'Script: Executes a script at each hit'.
 	checkBox whenActivatedDo: [ self activate ].
