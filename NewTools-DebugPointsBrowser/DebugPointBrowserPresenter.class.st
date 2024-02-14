@@ -19,11 +19,11 @@ Class {
 { #category : 'world menu' }
 DebugPointBrowserPresenter class >> menuCommandOn: aBuilder [
 	<worldMenu>
-	(aBuilder item: #'Debug Point Manager')
+	(aBuilder item: #'Debug Point Browser')
 		parent: #Debug;
 		action: [ self new open ];
 		order: -3;
-		help: 'for more information contact max.zurbriggen@uzh.ch';
+		help: 'opens a browser to visualize and configure debug points';
 		icon: (self iconNamed: #glamorousBug).
 	aBuilder withSeparatorAfter
 ]
