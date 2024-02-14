@@ -1,3 +1,6 @@
+"
+I am a command to install breakpoints on readings of variables.
+"
 Class {
 	#name : 'ClyBreakOnVariableReadCommand',
 	#superclass : 'ClyDebugBreakOnVariableCommand',

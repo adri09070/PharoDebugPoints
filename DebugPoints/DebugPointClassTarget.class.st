@@ -1,3 +1,6 @@
+"
+I am a debug point target, that installs metalinks in the scope of a class.
+"
 Class {
 	#name : 'DebugPointClassTarget',
 	#superclass : 'DebugPointTarget',

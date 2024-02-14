@@ -1,3 +1,6 @@
+"
+I am the base class to install debug points on a variable on the calypso browser
+"
 Class {
 	#name : 'ClyDebugVariableCommand',
 	#superclass : 'SycVariableCommand',

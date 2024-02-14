@@ -1,5 +1,5 @@
 "
-I am a debug point which keeps track of the values of the node I am attached to. Whenever the debug point is hit the value is recorded in my history.
+I am a debug point which keeps track of the values of the node I am attached to. Whenever the debug point is hit, the corresponding value is recorded in my history. It is possible to set a limit to the value history
 "
 Class {
 	#name : 'WatchDebugPoint',

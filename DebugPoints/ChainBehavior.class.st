@@ -1,5 +1,6 @@
 "
-I am a behavior that can be added to debug points. I maintain a chain of debug points. When a debug point in the chain is hit I deactivate it and activate the next debug point in the chain.
+I am a behavior that can be added to debug points. 
+I maintain a chain of debug points. When a debug point in the chain is hit I deactivate it and activate the next debug point in the chain.
 "
 Class {
 	#name : 'ChainBehavior',

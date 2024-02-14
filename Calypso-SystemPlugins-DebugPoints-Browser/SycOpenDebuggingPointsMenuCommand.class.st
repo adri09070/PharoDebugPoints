@@ -1,3 +1,6 @@
+"
+I define how the debugging point menu group should activate inside calypso
+"
 Class {
 	#name : 'SycOpenDebuggingPointsMenuCommand',
 	#superclass : 'SycOpenContextMenuCommand',

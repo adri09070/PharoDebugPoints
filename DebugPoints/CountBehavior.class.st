@@ -1,5 +1,7 @@
 "
-I am a count behavior that can be added to DebugPoints. I count how often the debug point has been reached. I only increase the count if conditions are evaluated to true (all previous behaviors have to return ""true"" when their execution methods are called.
+I am a count behavior that can be added to DebugPoints. 
+I count how often the debug point has been reached. 
+I only increase the count if conditions are evaluated to true: all previous behaviors have to return ""true"" when their #execute methods are called.
 "
 Class {
 	#name : 'CountBehavior',

@@ -1,5 +1,6 @@
 "
-I am a script behavior that can be added to debug points. I execute arbitrary code that is saved in my script variable.
+I am a script behavior that can be added to debug points. 
+I execute arbitrary code that is saved in my script variable.
 "
 Class {
 	#name : 'ScriptBehavior',

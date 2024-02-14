@@ -1,3 +1,6 @@
+"
+I am a UI element to display all methods, and their source code, affected by a selected debug point which targets a variable
+"
 Class {
 	#name : 'DebugPointVariableTargetPresenter',
 	#superclass : 'SpPresenter',

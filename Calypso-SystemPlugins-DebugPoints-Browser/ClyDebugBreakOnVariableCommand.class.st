@@ -1,3 +1,6 @@
+"
+I am a command to install breakpoints on variables of a class
+"
 Class {
 	#name : 'ClyDebugBreakOnVariableCommand',
 	#superclass : 'ClyDebugVariableCommand',

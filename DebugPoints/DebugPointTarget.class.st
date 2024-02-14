@@ -1,3 +1,8 @@
+"
+I am the base class that serevs as wrappers for debug point targets.
+
+I define how to install a metalink on me, and how to update the DebugPoint browser when it is selected in the debug point browser.
+"
 Class {
 	#name : 'DebugPointTarget',
 	#superclass : 'Object',

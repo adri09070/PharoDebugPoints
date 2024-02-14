@@ -1,3 +1,6 @@
+"
+I define a command to add a breakpoint with Once behavior on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddOnceBreakPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

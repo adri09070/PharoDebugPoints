@@ -1,3 +1,6 @@
+"
+I am a command to install watchpoints on variables of a class.
+"
 Class {
 	#name : 'ClyDebugWatchOnVariableCommand',
 	#superclass : 'ClyDebugVariableCommand',

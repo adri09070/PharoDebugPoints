@@ -1,3 +1,6 @@
+"
+I am the base class for commands to install from the inspector object-centric debug points 
+"
 Class {
 	#name : 'StDebugPointCommand',
 	#superclass : 'CmCommand',

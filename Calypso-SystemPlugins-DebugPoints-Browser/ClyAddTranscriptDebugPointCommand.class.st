@@ -1,3 +1,6 @@
+"
+I define a command to add a breakpoint with a Transcript behavior on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddTranscriptDebugPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

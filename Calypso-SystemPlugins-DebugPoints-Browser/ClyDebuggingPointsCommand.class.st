@@ -1,5 +1,7 @@
 "
-I am the superclass for all menu entries in the ""Debug Points"" menu entry when right clicking in a code presenter.
+I am the superclass for all menu entries in the ""Debug Points"" menu entry when right clicking in a code presenter in Calypso.
+
+All subclasses define a command to install a debug point with or without a behavior, on an AST node
 "
 Class {
 	#name : 'ClyDebuggingPointsCommand',

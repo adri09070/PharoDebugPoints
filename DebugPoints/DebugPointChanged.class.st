@@ -1,5 +1,5 @@
 "
-I am an announcement that is sent when a DebugPoint is changed.
+I am an announcement that is sent when a DebugPoint has been changed.
 "
 Class {
 	#name : 'DebugPointChanged',

@@ -1,3 +1,6 @@
+"
+I define a command to add a breakpoint with a Script behavior on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddScriptDebugPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

@@ -1,3 +1,6 @@
+"
+I am the base class for commands to install from the inspector object-centric breakpoints on a variable's readings and writings
+"
 Class {
 	#name : 'StBreakOnAccessCommand',
 	#superclass : 'StDebugPointSlotTargetCommand',

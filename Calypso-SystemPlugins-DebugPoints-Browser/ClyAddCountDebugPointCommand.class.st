@@ -1,3 +1,6 @@
+"
+I define a command to add a breakpoint with Count behavior on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddCountDebugPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

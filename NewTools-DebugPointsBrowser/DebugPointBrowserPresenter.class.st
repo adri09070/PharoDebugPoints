@@ -1,5 +1,5 @@
 "
-I am the UI for the complete DebugPoint Manager.
+I am the UI for the complete DebugPoint Browser, used to visualize and configure debug points and their behaviors.
 "
 Class {
 	#name : 'DebugPointBrowserPresenter',

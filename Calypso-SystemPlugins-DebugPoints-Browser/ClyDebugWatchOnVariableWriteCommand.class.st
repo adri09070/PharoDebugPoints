@@ -1,3 +1,6 @@
+"
+I am a command to install watchpoints on writings of a variable
+"
 Class {
 	#name : 'ClyDebugWatchOnVariableWriteCommand',
 	#superclass : 'ClyDebugWatchOnVariableCommand',

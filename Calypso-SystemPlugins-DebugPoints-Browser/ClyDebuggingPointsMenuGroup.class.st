@@ -1,3 +1,6 @@
+"
+I define a command group that should contain all debug point commands in calypso
+"
 Class {
 	#name : 'ClyDebuggingPointsMenuGroup',
 	#superclass : 'CmdMenuGroup',

@@ -1,5 +1,6 @@
 "
-I am a behavior that can be added to debug points. I write the string in my text variable to the transcript window when executed.
+I am a behavior that can be added to debug points. 
+I write the string in my text variable to the transcript window when executed.
 "
 Class {
 	#name : 'TranscriptBehavior',

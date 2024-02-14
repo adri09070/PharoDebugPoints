@@ -1,5 +1,7 @@
 "
-I am a behavior that can be added to debug points. I check if the current execution context is a test. Only if the debug point is reached when running a test the execution of behaviors continues, otherwise it interrupts.
+I am a behavior that can be added to debug points. 
+I check if the current execution context is a test. 
+The execution of behaviors continues only if the debug point is reached while running a test, otherwise it interrupts.
 "
 Class {
 	#name : 'TestEnvironmentBehavior',

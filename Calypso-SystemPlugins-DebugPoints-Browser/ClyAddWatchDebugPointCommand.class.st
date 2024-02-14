@@ -1,3 +1,6 @@
+"
+I define a command to add a watchpoint on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddWatchDebugPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

@@ -1,3 +1,6 @@
+"
+I am a command to install from the inspector object-centric breakpoints on a method call, for a specific object. 
+"
 Class {
 	#name : 'StBreakOnCallCommand',
 	#superclass : 'StDebugPointNodeTargetCommand',

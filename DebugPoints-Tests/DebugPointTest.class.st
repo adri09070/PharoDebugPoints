@@ -1,3 +1,6 @@
+"
+I am a test class that tests the behavior of different debug points on different targets with different behaviors
+"
 Class {
 	#name : 'DebugPointTest',
 	#superclass : 'TestCase',

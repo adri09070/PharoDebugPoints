@@ -1,5 +1,5 @@
 "
-I am the subclass for all debug points. New Debug points should be implemented as subclasses.
+I am the base class for all debug point classes. New Debug points should be implemented as subclasses.
 "
 Class {
 	#name : 'DebugPoint',

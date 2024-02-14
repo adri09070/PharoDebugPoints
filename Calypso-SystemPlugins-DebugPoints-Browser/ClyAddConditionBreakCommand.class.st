@@ -1,3 +1,6 @@
+"
+I define a command to add a conditional breakpoint on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddConditionBreakCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

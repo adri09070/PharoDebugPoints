@@ -1,3 +1,6 @@
+"
+I define a command to add a breakpoint with ChainLink behavior on the AST node corresponding to the selected code
+"
 Class {
 	#name : 'ClyAddChainDebugPointCommand',
 	#superclass : 'ClyDebuggingPointsCommand',

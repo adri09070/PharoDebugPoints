@@ -1,3 +1,6 @@
+"
+I am the base class for commands to install from the inspector object-centric breakpoints on a method call, for a specific object. These object-centric breakpoints will only break once
+"
 Class {
 	#name : 'StBreakOnCallOnceCommand',
 	#superclass : 'StDebugPointNodeTargetCommand',

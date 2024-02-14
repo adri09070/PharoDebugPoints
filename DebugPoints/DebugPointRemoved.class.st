@@ -1,5 +1,5 @@
 "
-I am an announcement that is sent when a DebugPoint is removed.
+I am an announcement that is sent when a DebugPoint has been removed.
 "
 Class {
 	#name : 'DebugPointRemoved',

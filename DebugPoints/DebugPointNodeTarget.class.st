@@ -1,3 +1,6 @@
+"
+I am a debug point target that installs a metalink on an AST node of a method
+"
 Class {
 	#name : 'DebugPointNodeTarget',
 	#superclass : 'DebugPointClassTarget',

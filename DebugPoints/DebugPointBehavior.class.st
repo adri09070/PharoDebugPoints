@@ -1,13 +1,13 @@
 "
-I am the subclass for different behaviors which can be added to all debug points.
+I am the base class for different behaviors that can be added to all debug points.
 
-In what orders the behaviors are executed is decided by the priority variable.
+In which order the behaviors are executed is decided by the priority variable.
 The highest value is executed first.
 
 
 API:
-execute method should return true if execution should continue and false if it should interrupt.
-remove method can be used if something has to be cleaned up when a behavior is removed from a debug point.
+- #execute method should return true if execution should continue and false if it should interrupt.
+- #remove method can be used if something has to be cleaned up when a behavior is removed from a debug point.
 "
 Class {
 	#name : 'DebugPointBehavior',

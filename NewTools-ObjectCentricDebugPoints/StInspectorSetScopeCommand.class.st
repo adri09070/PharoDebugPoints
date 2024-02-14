@@ -1,5 +1,5 @@
 "
-Adds an icon in the inspector where you can set the scope of a debug point to the inspected object.
+I am an inspector command allowing to set the scope of a debug point to the inspected object.
 "
 Class {
 	#name : 'StInspectorSetScopeCommand',

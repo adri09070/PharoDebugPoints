@@ -1,3 +1,8 @@
+"
+I am a debug point target that installs a metalink on an instance variable slot of a class.
+
+
+"
 Class {
 	#name : 'DebugPointInstanceVariableTarget',
 	#superclass : 'DebugPointClassTarget',

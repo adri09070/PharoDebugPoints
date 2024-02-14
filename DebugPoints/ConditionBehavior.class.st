@@ -1,5 +1,6 @@
 "
-I am the condition behavior which can be added to debug points. If my condition is true or nil the execute method will return true, else it will return false or an error.
+I am a behavior defining an execution condition that can be added to debug points. 
+If my condition evaluates to true or nil, the #execute method will return true, else it will return false or an error.
 "
 Class {
 	#name : 'ConditionBehavior',

@@ -1,5 +1,5 @@
 "
-I am the UI element for a breakpoint.
+I am the breakpoint-specific UI element.
 "
 Class {
 	#name : 'BreakPresenter',

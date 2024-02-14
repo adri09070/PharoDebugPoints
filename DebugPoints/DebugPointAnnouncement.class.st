@@ -1,5 +1,5 @@
 "
-I am the base for DebugPoint Announcements that are required to update UIs.
+I am the base class for DebugPoint Announcements that are required to update UIs when a debug point has been added/changed/removed.
 "
 Class {
 	#name : 'DebugPointAnnouncement',

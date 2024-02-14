@@ -1,5 +1,5 @@
 "
-I create a horizontal list of UI elements, based on the behaviors and class of a DebugPoint.
+I create a vertical list of UI elements, based on the behaviors and class of a DebugPoint.
 "
 Class {
 	#name : 'DebugPointEditorPresenter',

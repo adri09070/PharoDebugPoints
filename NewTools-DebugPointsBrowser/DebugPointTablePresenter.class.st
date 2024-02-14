@@ -1,5 +1,5 @@
 "
-I am a table presenter for debug points with a custom context menu.
+I am a table presenter for debug points with a custom context menu to perform several actions (browse, inspect, ...).
 "
 Class {
 	#name : 'DebugPointTablePresenter',

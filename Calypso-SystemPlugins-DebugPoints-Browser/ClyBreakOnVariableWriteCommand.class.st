@@ -1,3 +1,6 @@
+"
+I am a command to install breakpoints on writings of variables.
+"
 Class {
 	#name : 'ClyBreakOnVariableWriteCommand',
 	#superclass : 'ClyDebugBreakOnVariableCommand',

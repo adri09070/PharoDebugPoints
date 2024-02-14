@@ -1,5 +1,5 @@
 "
-I a the UI element for a watchpoint.
+I a the watchpoint-specific UI element.
 "
 Class {
 	#name : 'WatchPresenter',

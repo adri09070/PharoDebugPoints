@@ -1,3 +1,6 @@
+"
+I am a debug point target that decorates a debug point class target to adapt it to the scope of a specific instance scope
+"
 Class {
 	#name : 'DebugPointObjectTarget',
 	#superclass : 'DebugPointTarget',
