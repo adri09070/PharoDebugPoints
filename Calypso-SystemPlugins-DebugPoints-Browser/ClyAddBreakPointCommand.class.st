@@ -19,6 +19,13 @@ ClyAddBreakPointCommand class >> contextMenuOrder [
 	^1
 ]
 
+{ #category : 'activation' }
+ClyAddBreakPointCommand class >> methodEditorLeftBarClickActivation [
+
+	<classAnnotation>
+	^ CmdTextLeftBarDoubleClickActivation for: ClyMethodSourceCodeContext
+]
+
 { #category : 'accessing' }
 ClyAddBreakPointCommand >> defaultMenuIconName [
 	^#smallError
@@ -33,7 +40,7 @@ ClyAddBreakPointCommand >> defaultMenuItemName [
 ClyAddBreakPointCommand >> execute [
 
 	| dp |
-	dp := DebugPointManager installNew: BreakDebugPoint On: sourceNode.
+	dp := DebugPointManager installNew: BreakDebugPoint on: sourceNode.
 
 	self putIconInProperties: dp 
 ]
